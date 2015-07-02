@@ -5,18 +5,20 @@ angular.module('MAResources').controller('MAResourcesController', function($scop
         drawDots: true,
         axes: {
             x: {
-                key: 'date', type: 'date', ticksFormatter: function(date) {
+                key: 'date',
+                type: 'date',
+                ticksFormatter: function formatDate(date) {
                     return moment(date).format('MMM YYYY');
                 }
             },
             y: {
-                ticksFormatter: function(amount) {
+                ticksFormatter: function formatCurrency(amount) {
                     return amount + ' €';
                 }
             }
         },
         tooltip: {
-            formatter: function(date, amount, series) {
+            formatter: function makeTooltip(date, amount, series) {
                 return  'En '
                         + moment(date).format('MMMM YYYY')
                         + ', vous avez touché des '
