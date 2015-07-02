@@ -17,7 +17,16 @@ angular.module('MAResources').controller('MAResourcesController', function($scop
 
     $scope.options = {
         axes: {
-            x: { key: 'date', type: 'date', ticksFormatter: function(date) { return moment(date).format('MMM YYYY') } },
+            x: {
+                key: 'date', type: 'date', ticksFormatter: function(date) {
+                    return moment(date).format('MMM YYYY');
+                }
+            },
+            y: {
+                ticksFormatter: function(amount) {
+                    return amount + ' €';
+                }
+            }
         },
         series: [
             { id: 'salaires', y: 'salaires', label: 'Salaires', type: 'area' },
@@ -32,7 +41,17 @@ angular.module('MAResources').controller('MAResourcesController', function($scop
               ]
             }
         ],
-        tooltip: {mode: 'scrubber', formatter: function(x, y, series) {return 'pouet';}},
+        tooltip: {
+            formatter: function(date, amount, series) {
+                return  'En '
+                        + moment(date).format('MMMM YYYY')
+                        + ', vous avez touché des '
+                        + series.label.toLowerCase()
+                        + ' de '
+                        + amount
+                        + ' €.';
+            }
+        },
         drawLegend: true,
         drawDots: true,
     };
