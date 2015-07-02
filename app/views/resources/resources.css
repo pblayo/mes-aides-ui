@@ -1,0 +1,5 @@
+#resources-pane text {
+    /* !important needed due to inline styles applied to text.scrubberText.series_[0-9] */
+    font-family: 'Helvetica Neue' !important;
+    font-size: 1.3rem !important;
+}
