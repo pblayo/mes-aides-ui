@@ -1,6 +1,11 @@
 'use strict';
 
-var ddsApp = angular.module('ddsApp', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngStorage', 'ddsCommon', 'ngSanitize']);
+var ddsApp = angular.module('ddsApp', [
+    'ngAnimate',  'ngStorage', 'ngSanitize',
+    'ui.router', 'ui.bootstrap', 'n3-line-chart',
+    'ddsCommon', 'MAResources'
+]);
+
 
 ddsApp.config(function($locationProvider, $stateProvider, $urlRouterProvider, $uiViewScrollProvider) {
     moment.lang('fr');
@@ -127,13 +132,8 @@ ddsApp.config(function($locationProvider, $stateProvider, $urlRouterProvider, $u
         })
         .state('foyer.ressources', {
             url: '/ressources',
-            controller: 'FoyerRessourcesCtrl',
-            templateUrl: '/partials/foyer/ressources/layout.html'
-        })
-        .state('foyer.ressources.types', {
-            templateUrl: '/partials/foyer/ressources/types.html',
-            controller: 'FoyerRessourceTypesCtrl',
-            url: '/:individu/types'
+            controller: 'MAResourcesController',
+            templateUrl: '/views/resources/resources.html'
         })
         .state('foyer.pensionsAlimentaires', {
             templateUrl: '/partials/foyer/pensions-alimentaires.html',
