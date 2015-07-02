@@ -18,11 +18,10 @@ angular.module('MAResources').controller('MAResourcesController', function($scop
     $scope.options = {
         axes: {
             x: { key: 'date', type: 'date', ticksFormatter: function(date) { return moment(date).format('MMM YYYY') } },
-            y: { type: 'linear', min: 0, max: 2000, ticks: 8 }
         },
         series: [
-            { id: 'salaires', y: 'salaires', label: 'Salaires', color: 'steelblue', type: 'area' },
-            { id: 'af', y: 'af', label: 'Allocations Familiales', color: 'lightsteelblue', type: 'area' }
+            { id: 'salaires', y: 'salaires', label: 'Salaires', type: 'area' },
+            { id: 'af', y: 'af', label: 'Allocations Familiales', type: 'area' }
         ],
         stacks: [
             {
@@ -33,12 +32,8 @@ angular.module('MAResources').controller('MAResourcesController', function($scop
               ]
             }
         ],
-        lineMode: 'linear',
-        tension: 0.7,
         tooltip: {mode: 'scrubber', formatter: function(x, y, series) {return 'pouet';}},
         drawLegend: true,
         drawDots: true,
-        hideOverflow: false,
-        columnsHGap: 5
     };
 });
