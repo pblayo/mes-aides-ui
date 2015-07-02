@@ -1,21 +1,8 @@
 angular.module('MAResources').controller('MAResourcesController', function($scope, MASituation) {
-    $scope.data = [
-        { date: new Date('2014-07'), salaires: 1440, af: 96},
-        { date: new Date('2014-08'), salaires: 1440, af: 96},
-        { date: new Date('2014-09'), salaires: 1440, af: 96},
-        { date: new Date('2014-10'), salaires: 1440, af: 96},
-        { date: new Date('2014-11'), salaires: 1440, af: 96},
-        { date: new Date('2014-12'), salaires: 1440, af: 96},
-        { date: new Date('2015-01'), salaires: 1440, af: 96},
-        { date: new Date('2015-02'), salaires: 1440, af: 96},
-        { date: new Date('2015-03'), salaires: 1340, af: 120},
-        { date: new Date('2015-04'), salaires: 1340, af: 120},
-        { date: new Date('2015-05'), salaires: 1340, af: 120},
-        { date: new Date('2015-06'), salaires: 1340, af: 120},
-        { date: new Date('2015-07'), salaires: 0, af: 120}
-    ];
 
     $scope.options = {
+        drawLegend: true,
+        drawDots: true,
         axes: {
             x: {
                 key: 'date', type: 'date', ticksFormatter: function(date) {
@@ -28,19 +15,6 @@ angular.module('MAResources').controller('MAResourcesController', function($scop
                 }
             }
         },
-        series: [
-            { id: 'salaires', y: 'salaires', label: 'Salaires', type: 'area' },
-            { id: 'af', y: 'af', label: 'Allocations Familiales', type: 'area' }
-        ],
-        stacks: [
-            {
-              axis: 'y',
-              series: [
-                  'salaires',
-                  'af'
-              ]
-            }
-        ],
         tooltip: {
             formatter: function(date, amount, series) {
                 return  'En '
@@ -51,8 +25,31 @@ angular.module('MAResources').controller('MAResourcesController', function($scop
                         + amount
                         + ' €.';
             }
-        },
-        drawLegend: true,
-        drawDots: true,
+        }
     };
+
+    $scope.options.series = [];
+    $scope.options.stacks = [ { axis: 'y', series: [] } ];
+
+    var data = {};
+
+    angular.forEach(MASituation.individus[0].resources, function(dates, id) {
+        $scope.options.stacks[0].series.push(id);
+        $scope.options.series.push({
+            id: id,
+            y: id,
+            label: id,    // TODO
+            type: 'area'
+        });
+
+        angular.forEach(dates, function(amount, date) {
+            data[date] = data[date] || { date: new Date(date) };
+            data[date][id] = amount;
+        });
+    });
+
+    $scope.data = [];
+    angular.forEach(data, function(point) {
+        $scope.data.push(point);  // assumes that objects keeps insertion order
+    });
 });
