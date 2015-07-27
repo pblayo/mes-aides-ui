@@ -1,4 +1,5 @@
-<div ng-repeat="(key, months) in resources">
-  {{ key }}
+<div ng-repeat="(key, months) in resources"
+  ng-class="resourceDefinition(key).category">
+  {{ resourceDefinition(key).label }}
   <ma-resource-input resource="months"></ma-resource-input>
 </div>

@@ -1,5 +1,5 @@
 angular.module('MAResources')
-.controller('MAResourcesController', function($scope, MASituation) {
+.controller('MAResourcesController', function($scope, MASituation, MAResourcesList) {
     $scope.options = {
         drawLegend: true,
         drawDots: true,
@@ -40,7 +40,7 @@ angular.module('MAResources')
         $scope.options.series.push({
             id: id,
             y: id,
-            label: id,    // TODO
+            label: MAResourcesList[id].label,
             type: 'area'
         });
 
