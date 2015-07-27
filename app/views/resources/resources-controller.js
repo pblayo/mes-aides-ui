@@ -1,5 +1,5 @@
-angular.module('MAResources').controller('MAResourcesController', function($scope, MASituation) {
-
+angular.module('MAResources')
+.controller('MAResourcesController', function($scope, MASituation) {
     $scope.options = {
         drawLegend: true,
         drawDots: true,
@@ -50,8 +50,8 @@ angular.module('MAResources').controller('MAResourcesController', function($scop
         });
     });
 
-    $scope.data = [];
+    $scope.resources = [];
     angular.forEach(data, function(point) {
-        $scope.data.push(point);  // assumes that objects keeps insertion order
+        $scope.resources.push(point);  // assumes that objects keeps insertion order
     });
 });
