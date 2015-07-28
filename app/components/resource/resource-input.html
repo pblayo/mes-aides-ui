@@ -1,4 +1,6 @@
-<label ng-repeat="(month, value) in resource">
+<h3>{{ label }}</h3>
+
+<label ng-repeat="(month, value) in data">
   {{ month | formatDate:'MMM YYYY' }}
   <input ng-model="value"
     type="number"

@@ -1,10 +1,14 @@
 angular.module('MAResources')
-.directive('maResourceInput', function() {
+.directive('maResourceInput', function(MAResourcesList) {
     return {
         restrict: 'E',
         templateUrl: '/components/resource/resource-input.html',
         scope: {
-            resource: '='
+            resourceId: '&',
+            data: '='
+        },
+        link: function($scope, element, attrs) {
+            $scope.label = MAResourcesList[$scope.resourceId()].label;
         }
     }
 });
