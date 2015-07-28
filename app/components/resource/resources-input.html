@@ -1,5 +1,9 @@
-<div ng-repeat="(key, months) in resources">
-  <ma-resource-input resource-id="key" data="months"></ma-resource-input>
+<div ng-repeat="(key, entries) in resources">
+  <ma-resource-input ng-repeat="entry in entries"
+    resource-id="key"
+    value="entry.value"
+    earned-on="entry.earnedOn"
+  ></ma-resource-input>
 </div>
 
 <div>

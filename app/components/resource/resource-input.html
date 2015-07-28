@@ -9,10 +9,9 @@
   &nbsp;€
 </label>
 
-<label ng-repeat="(month, value) in data">
+<label ng-repeat="(month, earned) in earnedOn">
   {{ month | formatDate:'MMM YYYY' }}
-  <input name="{{ resourceId() }}:{{ month }}"
+  <input ng-model="earned"
     type="checkbox"
-    checked="checked"
     >
 </label>

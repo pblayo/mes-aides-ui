@@ -35,7 +35,7 @@ angular.module('MAResources')
 
     var data = {};
 
-    angular.forEach(MASituation.individus[0].resources, function(dates, id) {
+    angular.forEach(MASituation.individus[0].resources, function(entries, id) {
         $scope.options.stacks[0].series.push(id);
         $scope.options.series.push({
             id: id,
@@ -44,10 +44,12 @@ angular.module('MAResources')
             type: 'area'
         });
 
-        angular.forEach(dates, function(amount, date) {
-            data[date] = data[date] || { date: new Date(date) };
-            data[date][id] = amount;
-        });
+        entries.forEach(function(entry) {
+            angular.forEach(entry.earnedOn, function(earned, date) {
+                data[date] = data[date] || { date: new Date(date) };
+                data[date][id] = (data[date][id] || 0) + (earned && entry.value);
+            });
+        })
     });
 
     $scope.resources = [];

@@ -5,7 +5,8 @@ angular.module('MAResources')
         templateUrl: '/components/resource/resource-input.html',
         scope: {
             resourceId: '&',
-            data: '='
+            value: '=',
+            earnedOn: '=',
         },
         link: function($scope, element, attrs) {
             $scope.label = MAResourcesList[$scope.resourceId()].label;
