@@ -36,19 +36,22 @@ angular.module('MAResources')
     var data = {};
 
     angular.forEach(MASituation.individus[0].resources, function(entries, id) {
-        $scope.options.stacks[0].series.push(id);
-        $scope.options.series.push({
-            id: id,
-            y: id,
-            label: MAResourcesList[id].label,
-            type: 'area'
-        });
+        entries.forEach(function(entry, index) {
+            var entryId = id + ':' + index;
 
-        entries.forEach(function(entry) {
+            $scope.options.stacks[0].series.push(entryId);
+            $scope.options.series.push({
+                id: entryId,
+                y: entryId,
+                label: MAResourcesList[id].label,
+                color: 'hsl(' + (45 * id.length) + ',100%,' + (60 - 15 * index ) + '%)',
+                thickness: '0px',
+                type: 'area'
+            });
             angular.forEach(entry.earnedOn, function(earned, date) {
                 data[date] = data[date] || { date: new Date(date) };
-                data[date][id] =  data[date][id] || 0;
-                data[date][id] += earned && entry.value;
+                data[date][entryId] =  data[date][entryId] || 0;
+                data[date][entryId] += earned && entry.value;
             });
         })
     });
