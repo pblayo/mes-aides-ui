@@ -1,11 +1,18 @@
-<h3>{{ label }}</h3>
+<label>
+  <h3>{{ label }}</h3>
 
-<label ng-repeat="(month, value) in data">
-  {{ month | formatDate:'MMM YYYY' }}
   <input ng-model="value"
     type="number"
     min="0"
     max="99999"
     >
   &nbsp;€
+</label>
+
+<label ng-repeat="(month, value) in data">
+  {{ month | formatDate:'MMM YYYY' }}
+  <input name="{{ resourceId() }}:{{ month }}"
+    type="checkbox"
+    checked="checked"
+    >
 </label>
