@@ -1,5 +1,7 @@
 angular.module('MAResources')
 .controller('MAResourcesController', function($scope, MASituation, MAResourcesList) {
+    $scope.individu = MASituation.individus[0];
+
     $scope.options = {
         drawLegend: true,
         drawDots: true,
@@ -34,13 +36,13 @@ angular.module('MAResources')
     $scope.options.stacks = [ { axis: 'y', series: [] } ];
 
     $scope.$watch(function() {
-        return MASituation.individus[0].resources;
+        return $scope.individu.resources;
     }, function() {
         var data = {};
         $scope.options.stacks[0].series = [];
         $scope.options.series = [];
 
-        angular.forEach(MASituation.individus[0].resources, function(entries, id) {
+        angular.forEach($scope.individu.resources, function(entries, id) {
             entries.forEach(function(entry, index) {
                 var entryId = id + ':' + index;
 

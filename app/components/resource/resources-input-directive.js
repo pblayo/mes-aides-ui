@@ -5,7 +5,7 @@ angular.module('MAResources')
         templateUrl: '/components/resource/resources-input.html',
         controller: 'MAResourcesInputController',
         scope: {
-            individu: '&'
+            individu: '='
         }
     }
 });
