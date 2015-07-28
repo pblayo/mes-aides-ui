@@ -47,7 +47,8 @@ angular.module('MAResources')
         entries.forEach(function(entry) {
             angular.forEach(entry.earnedOn, function(earned, date) {
                 data[date] = data[date] || { date: new Date(date) };
-                data[date][id] = (data[date][id] || 0) + (earned && entry.value);
+                data[date][id] =  data[date][id] || 0;
+                data[date][id] += earned && entry.value;
             });
         })
     });
