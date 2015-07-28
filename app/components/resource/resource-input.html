@@ -11,7 +11,7 @@
 
 <label ng-repeat="(month, earned) in earnedOn">
   {{ month | formatDate:'MMM YYYY' }}
-  <input ng-model="earned"
+  <input ng-model="earnedOn[month]"
     type="checkbox"
     >
 </label>
