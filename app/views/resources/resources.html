@@ -2,7 +2,10 @@
   <h1>Vos ressources</h1>
   <p>Montants <strong>nets</strong> perçus en France comme à l'étranger.</p>
 
-  <linechart data="resources" options="options"></linechart>
+  <linechart ng-show="individu.hasResources()"
+    data="resources"
+    options="options"
+  ></linechart>
 
   <ma-resources-input individu="individu"></ma-resources-input>
 </ui-view>

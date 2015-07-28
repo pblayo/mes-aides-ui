@@ -11,5 +11,10 @@
 </div>
 
 <div>
-  <h3>Déclarer une autre ressource <span class="btn btn-primary glyphicon glyphicon-plus" aria-hidden="true"></span></h3>
+  <h3 class="btn btn-lg"
+    ng-class="{
+      'btn-primary': ! individu.hasResources(),
+      'btn-link': individu.hasResources()
+    }"
+  >Déclarer une {{ individu.hasResources() ? 'autre' : '' }} ressource <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></h3>
 </div>

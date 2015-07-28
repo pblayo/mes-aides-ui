@@ -83,8 +83,15 @@ function Individu() {
     };
 }
 
+Individu.prototype.hasResources = function hasResources() {
+    return Object.keys(this.resources).length > 0;
+}
+
 Individu.prototype.removeResource = function removeResource(id, index) {
     this.resources[id].splice(index, 1);
+
+    if (this.resources[id].length == 0)
+        delete this.resources[id];
 }
 
 function Situation() {
