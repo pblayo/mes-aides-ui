@@ -83,6 +83,10 @@ function Individu() {
     };
 }
 
+Individu.prototype.removeResource = function removeResource(id, index) {
+    this.resources[id].splice(index, 1);
+}
+
 function Situation() {
     this.individus = [
         new Individu()
