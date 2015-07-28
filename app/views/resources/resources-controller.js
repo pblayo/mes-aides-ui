@@ -65,9 +65,9 @@ angular.module('MAResources')
             })
         });
 
-        $scope.resources = [];
+        $scope.chartableResources = [];
         angular.forEach(data, function(point) {
-            $scope.resources.push(point);  // assumes that objects keeps insertion order
+            $scope.chartableResources.push(point);  // assumes that objects keeps insertion order
         });
     }, true);
 });
