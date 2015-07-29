@@ -1,8 +1,7 @@
-<div ng-repeat="(key, entries) in individu.resources">
-  <ma-resource-input ng-repeat-start="entry in entries"
-    resource-id="key"
-    value="entry.value"
-    earned-on="entry.earnedOn"
+<div ng-repeat="(resourceType, resources) in individu.resources">
+  <ma-resource-input ng-repeat-start="resource in resources"
+    resource="resource"
+    type="resourceType"
   ></ma-resource-input>
   <button ng-click="individu.removeResource(key, $index)"
     class="btn btn-xs btn-link"

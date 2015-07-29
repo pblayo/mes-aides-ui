@@ -1,7 +1,7 @@
 <label>
   <h3>{{ label }}</h3>
 
-  <input ng-model="value"
+  <input ng-model="resource.value"
     type="number"
     min="0"
     max="99999"
@@ -9,9 +9,9 @@
   &nbsp;€
 </label>
 
-<label ng-repeat="(month, earned) in earnedOn">
+<label ng-repeat="(month, earned) in resource.earnedOn">
   {{ month | formatDate:'MMM YYYY' }}
-  <input ng-model="earnedOn[month]"
+  <input ng-model="resource.earnedOn[month]"
     type="checkbox"
     >
 </label>

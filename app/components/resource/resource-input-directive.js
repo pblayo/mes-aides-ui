@@ -4,9 +4,8 @@ angular.module('MAResources')
         restrict: 'E',
         templateUrl: '/components/resource/resource-input.html',
         scope: {
-            resourceId: '&',
-            value: '=',
-            earnedOn: '=',
+            resourceId: '&type',
+            resource: '='
         },
         link: function($scope, element, attrs) {
             $scope.label = MAResourcesList[$scope.resourceId()].label;
