@@ -4,11 +4,10 @@ angular.module('MAResources')
         restrict: 'E',
         templateUrl: '/components/resource/resource-input.html',
         scope: {
-            resourceId: '&type',
             resource: '='
         },
         link: function($scope, element, attrs) {
-            $scope.label = MAResourcesList[$scope.resourceId()].label;
+            $scope.label = MAResourcesList[$scope.resource.type].label;
         }
     }
 });

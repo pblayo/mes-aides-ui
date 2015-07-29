@@ -21,7 +21,7 @@ angular.module('MAResources')
             }
 
             $scope.handleSelect = function handleSelect(selectedResource) {
-                $scope.individu.addResource(selectedResource);
+                $scope.individu.addResource(selectedResource.id);
                 $scope.fireSelect({ resource: selectedResource });
                 $scope.resource = null;  // empty selector
             }

@@ -42,27 +42,25 @@ angular.module('MAResources')
         $scope.options.stacks[0].series = [];
         $scope.options.series = [];
 
-        angular.forEach($scope.individu.resources, function(entries, id) {
-            entries.forEach(function(entry, index) {
-                var entryId = id + ':' + index;
+        $scope.individu.resources.forEach(function(resource, index) {
+            var entryId = 'resource:' + index;
 
-                $scope.options.series.push({
-                    id: entryId,
-                    y: entryId,
-                    label: MAResourcesList[id].label,
-                    color: 'hsl(' + (45 * id.length) + ',100%,' + (60 - 15 * index ) + '%)',
-                    thickness: '0px',
-                    type: 'area'
-                });
+            $scope.options.series.push({
+                id: entryId,
+                y: entryId,
+                label: MAResourcesList[resource.type].label,
+                color: 'hsl(' + (45 * resource.type.length) + ',100%,' + (60 - 15 * index ) + '%)',
+                thickness: '0px',
+                type: 'area'
+            });
 
-                $scope.options.stacks[0].series.push(entryId);
+            $scope.options.stacks[0].series.push(entryId);
 
-                angular.forEach(entry.earnedOn, function(earned, date) {
-                    data[date] = data[date] || { date: new Date(date) };
-                    data[date][entryId] =  data[date][entryId] || 0;
-                    data[date][entryId] += earned && entry.value;
-                });
-            })
+            angular.forEach(resource.earnedOn, function(didEarn, date) {
+                data[date] = data[date] || { date: new Date(date) };
+                data[date][entryId] =  data[date][entryId] || 0;
+                data[date][entryId] += didEarn && resource.value;
+            });
         });
 
         $scope.chartableResources = [];
