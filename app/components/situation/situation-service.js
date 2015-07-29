@@ -3,11 +3,13 @@ angular.module('MASituation')
 
 
 function Individu() {
-    this.resources = {
-        revenusSalarie: [
+    this.resources = {};
+    /** Example data in resources:
+    *
+        revenusSalarie: [   // resource type
             {
-                value: 1440,
-                earnedOn: {
+                value: 1440,    // monthly value
+                earnedOn: {     // String ISO month representation pointing to boolean value defining whether the value was earned for that month
                     '2014-07': true,
                     '2014-08': true,
                     '2014-09': true,
@@ -22,7 +24,7 @@ function Individu() {
                     '2015-06': false,
                     '2015-07': false
                 }
-            },
+            },  // there may be several instances of the same resource type, so they will always be wrapped in an array
             {
                 value: 1340,
                 earnedOn: {
@@ -60,27 +62,10 @@ function Individu() {
                     '2015-06': false,
                     '2015-07': false
                 }
-            },
-            {
-                value: 120,
-                earnedOn: {
-                    '2014-07': false,
-                    '2014-08': false,
-                    '2014-09': false,
-                    '2014-10': false,
-                    '2014-11': false,
-                    '2014-12': false,
-                    '2015-01': false,
-                    '2015-02': false,
-                    '2015-03': true,
-                    '2015-04': true,
-                    '2015-05': true,
-                    '2015-06': true,
-                    '2015-07': true
-                }
             }
         ]
-    };
+    }
+    */
 }
 
 Individu.prototype.hasResources = function hasResources() {
