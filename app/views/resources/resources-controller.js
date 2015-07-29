@@ -48,7 +48,7 @@ angular.module('MAResources')
             $scope.options.series.push({
                 id: entryId,
                 y: entryId,
-                label: MAResourcesList[resource.type].label,
+                label: MAResourcesList.getLabelOf(resource.type),
                 color: 'hsl(' + (45 * resource.type.length) + ',100%,' + (60 - 15 * index ) + '%)',
                 thickness: '0px',
                 type: 'area'
