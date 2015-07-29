@@ -1,0 +1,8 @@
+<div>
+  <input ng-model="resourceId"
+    type="text"
+    placeholder="Salaire…"
+    typeahead="resource as resource.label for resource in matchingResources($viewValue)"
+    typeahead-on-select="individu.addResource($model)"
+  >
+</div>
