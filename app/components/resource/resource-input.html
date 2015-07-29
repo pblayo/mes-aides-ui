@@ -1,5 +1,3 @@
-<h3>{{ label }}</h3>
-
 <label>
   <input ng-model="resource.value"
     type="number"
@@ -10,6 +8,10 @@
     >
   &nbsp;€
 </label>
+
+de
+
+<ma-resource-select resource="resource"></ma-resource-select>
 
 <label ng-repeat="(month, earned) in resource.earnedOn"
   title="Cochez si vous avez perçu {{ resource.value }} € de {{ label }} en {{ month | formatDate:'MMMM YYYY' }}">
