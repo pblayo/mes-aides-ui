@@ -21,11 +21,11 @@ angular.module('MAResources')
             formatter: function makeTooltip(date, amount, series) {
                 return  'En '
                         + moment(date).format('MMMM YYYY')
-                        + ', vous avez touché des '
-                        + series.label.toLowerCase()
-                        + ' de '
+                        + ', vous avez reçu '
                         + amount
-                        + ' €.';
+                        + ' € en '
+                        + series.label.toLowerCase()
+                        + '.';
             }
         }
     };
