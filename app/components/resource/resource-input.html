@@ -1,17 +1,21 @@
-<label>
-  <h3>{{ label }}</h3>
+<h3>{{ label }}</h3>
 
+<label>
   <input ng-model="resource.value"
     type="number"
     min="0"
     max="99999"
+    step="50"
+    title="Indiquez le montant mensuel net en euros de vos {{ label }}"
     >
   &nbsp;€
 </label>
 
-<label ng-repeat="(month, earned) in resource.earnedOn">
+<label ng-repeat="(month, earned) in resource.earnedOn"
+  title="Cochez si vous avez perçu {{ resource.value }} € de {{ label }} en {{ month | formatDate:'MMMM YYYY' }}">
   {{ month | formatDate:'MMM YYYY' }}
   <input ng-model="resource.earnedOn[month]"
     type="checkbox"
+    class="checkbox"
     >
 </label>
