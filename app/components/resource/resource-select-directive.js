@@ -4,8 +4,8 @@ angular.module('MAResources')
         restrict: 'E',
         templateUrl: '/components/resource/resource-select.html',
         scope: {
-            resource: '=',
-            individu: '='
+            individu: '=',
+            fireSelect: '&onSelect'
         },
         link: function($scope) {
             $scope.matchingResources = function getMatchingResources(query) {
@@ -18,6 +18,12 @@ angular.module('MAResources')
                 });
 
                 return result;
+            }
+
+            $scope.handleSelect = function handleSelect(selectedResource) {
+                $scope.individu.addResource(selectedResource);
+                $scope.fireSelect({ resource: selectedResource });
+                $scope.resource = null;  // empty selector
             }
         }
     }

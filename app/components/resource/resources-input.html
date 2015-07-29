@@ -11,12 +11,17 @@
 </div>
 
 <div>
-  <h3 class="btn btn-lg"
+  <h3 ng-hide="addingNewResource"
+    ng-click="addingNewResource = true"
     ng-class="{
       'btn-primary': ! individu.hasResources(),
       'btn-link': individu.hasResources()
     }"
+    class="btn btn-lg"
   >Déclarer une {{ individu.hasResources() ? 'autre' : '' }} ressource <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></h3>
 
-  <ma-resource-select individu="individu"></ma-resource-select>
+  <ma-resource-select ng-show="addingNewResource"
+    individu="individu"
+    on-select="addingNewResource = false"
+  ></ma-resource-select>
 </div>
