@@ -21,13 +21,25 @@ angular.module('MAResources')
         },
         tooltip: {
             formatter: function makeTooltip(date, amount, series) {
-                return  'En '
-                        + moment(date).format('MMMM YYYY')
-                        + ', vous avez touché des '
-                        + series.label.toLowerCase()
-                        + ' de '
-                        + amount
-                        + ' €.';
+                var label = series.label.toLowerCase(),
+                    result = 'En '
+                             + moment(date).format('MMMM YYYY')
+                             + ', vous ';
+
+                if (amount) {
+                    result += 'avez touché des '
+                            + label
+                            + ' de '
+                            + amount
+                            + ' €';
+                } else {
+                    result += 'n’avez pas touché de '
+                            + label;
+                }
+
+                result += '.';
+
+                return result;
             }
         }
     };
