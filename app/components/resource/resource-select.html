@@ -1,9 +1,7 @@
-<div>
-  <input ng-model="resource.type"
-    type="text"
-    placeholder="Salaire…"
-    typeahead="resourceType.id as resourceType.label for resourceType in matchingResources($viewValue)"
-    typeahead-input-formatter="getLabel($model)"
-    typeahead-on-select="fireSelect({ resourceType: $model })"
-  >
-</div>
+<input ng-model="resource.type"
+  type="text"
+  placeholder="Salaire…"
+  typeahead="resourceType.id as resourceType.label for resourceType in matchingResources($viewValue)"
+  typeahead-input-formatter="getLabel($model)"
+  typeahead-on-select="fireSelect({ resourceType: $model })"
+>
