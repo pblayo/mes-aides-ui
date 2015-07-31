@@ -6,3 +6,10 @@
 
   <ma-resources-input individu="0"></ma-resources-input>
 </ui-view>
+
+<div class="text-right">
+  <button type="submit"
+    ng-class="{ 'btn-success': individu.hasResources() }"
+    class="btn btn-lg"
+  >Valider</button>
+</div>
