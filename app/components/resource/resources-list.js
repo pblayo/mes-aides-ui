@@ -2,23 +2,27 @@ angular.module('MAResources').constant('MAResourcesList', (function() {
     var result = {
         revenusSalarie: {
             id: 'revenusSalarie',
-            label: 'Salaires, primes',
+            label: 'Salaires',
+            synonyms: 'Travail, Paie, Primes',
             category: 'Revenus d’activité',
         },
         stage: {
             id: 'stage',
-            label: 'Rémunération de stage',
+            label: 'Stage',
+            synonyms: 'Gratification, Stagiaire',
             category: 'Revenus d’activité',
         },
         revenusStageFormationPro: {
             id: 'revenusStageFormationPro',
-            label: 'Revenus de stage de formation professionnelle',
+            label: 'Formation professionnelle',
+            synonyms: 'Stage',
             category: 'Revenus d’activité',
         },
 
         allocationsChomage: {
             id: 'allocationsChomage',
-            label: 'Allocation chômage (ARE)',
+            label: 'Chômage',
+            synonyms: 'ARE, Allocation de Retour à l\'Emploi, Chomage, Pôle Emploi, Pole Emploi',
             category: 'Allocations',
         },
         allocationSecurisationPro: {
@@ -28,67 +32,80 @@ angular.module('MAResources').constant('MAResourcesList', (function() {
         },
         primeRepriseActivite: {
             id: 'primeRepriseActivite',
-            label: 'Prime forfaitaire mensuelle pour la reprise d’activité',
+            label: 'Prime de reprise d’activité',
+            synonyms: 'Prime forfaitaire mensuelle pour la reprise d’activité',
             category: 'Allocations',
         },
         allocationLogement: {
             id: 'allocationLogement',
-            label: 'Aides au logement (APL, ALS, ALF)',
+            label: 'Aides au logement',
+            synonyms: 'APL, ALS, ALF',
             category: 'Allocations',
         },
         af: {
             id: 'af',
             label: 'Allocations familiales',
+            synonyms: 'AF',
             category: 'Allocations',
         },
         cf: {
             id: 'cf',
-            label: 'Complément familial (CF)',
+            label: 'Complément familial',
+            synonyms: 'CF',
             category: 'Allocations',
         },
         asf: {
             id: 'asf',
-            label: 'Allocation de soutien familial (ASF)',
+            label: 'Allocation de soutien familial',
+            synonyms: 'ASF',
             category: 'Allocations',
         },
         rsa: {
             id: 'rsa',
-            label: 'Revenu de solidarité active (RSA)',
+            label: 'Revenu de solidarité active',
+            synonyms: 'RSA',
             category: 'Allocations',
         },
         aspa: {
             id: 'aspa',
-            label: 'Allocation de solidarité aux personnes âgées (ASPA)',
+            label: 'Allocation de solidarité aux personnes âgées',
+            synonyms: 'ASPA',
             category: 'Allocations',
         },
         asi: {
             id: 'asi',
-            label: 'Allocation supplémentaire d’invalidité (ASI)',
+            label: 'Allocation supplémentaire d’invalidité',
+            synonyms: 'ASI',
             category: 'Allocations',
         },
         ass: {
             id: 'ass',
-            label: 'Allocation de solidarité spécifique (ASS)',
+            label: 'Allocation de solidarité spécifique',
+            synonyms: 'ASS',
             category: 'Allocations',
         },
         aah: {
             id: 'aah',
-            label: 'Allocation adulte handicapé (AAH)',
+            label: 'Allocation adulte handicapé',
+            synonyms: 'AAH',
             category: 'Allocations',
         },
         paje: {
             id: 'paje',
-            label: 'Prestation d’accueil du jeune enfant (PAJE) - Allocation de base',
+            label: 'Prestation d’accueil du jeune enfant',
+            synonyms: 'PAJE',
             category: 'Allocations',
         },
         clca: {
             id: 'clca',
-            label: 'Complément de libre choix d’activité (CLCA)',
+            label: 'Complément de libre choix d’activité',
+            synonyms: 'CLCA',
             category: 'Allocations',
         },
         prepare: {
             id: 'prepare',
-            label: 'Prestation partagée d’éducation de l’enfant (PreParE)',
+            label: 'Prestation partagée d’éducation de l’enfant',
+            synonyms: 'PreParE',
             category: 'Allocations',
         },
 
@@ -140,12 +157,14 @@ angular.module('MAResources').constant('MAResourcesList', (function() {
         },
         prestationCompensatoire: {
             id: 'prestationCompensatoire',
-            label: 'Prestation compensatoire (suite à séparation)',
+            label: 'Prestation compensatoire',
+            synonyms: 'Séparation, Separation',
             category: 'Pensions',
         },
         pensionsRetraitesRentes: {
             id: 'pensionsRetraitesRentes',
-            label: 'Retraite (y compris reversion), rentes',
+            label: 'Retraites et rentes',
+            synonyms: 'Réversion, Reversion',
             category: 'Pensions',
         },
         retraiteCombattant: {
@@ -162,21 +181,25 @@ angular.module('MAResources').constant('MAResourcesList', (function() {
         caMicroEntreprise: {
             id: 'caMicroEntreprise',
             label: 'Micro-entreprise',
+            synonyms: 'Chiffre d\'affaire, CA, Prestation, Facturation',
             category: 'Revenus professionnels non salariés',
         },
         caAutoEntrepreneur: {
             id: 'caAutoEntrepreneur',
             label: 'Auto-entrepreneur',
+            synonyms: 'Chiffre d\'affaire, CA, Prestation, Facturation',
             category: 'Revenus professionnels non salariés',
         },
         revenusAgricolesTns: {
             id: 'revenusAgricolesTns',
             label: 'Exploitant agricole',
+            synonyms: 'Chiffre d\'affaire, CA, Exploitation, Agriculteur',
             category: 'Revenus professionnels non salariés',
         },
         autresRevenusTns: {
             id: 'autresRevenusTns',
             label: 'Profession libérale, entrepreneur',
+            synonyms: 'Chiffre d\'affaire, CA, Prestation, Facturation',
             category: 'Revenus professionnels non salariés',
         },
 

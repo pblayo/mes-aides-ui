@@ -9,15 +9,19 @@ angular.module('MAResources')
         },
         link: function($scope) {
             $scope.matchingResources = function getMatchingResources(query) {
-                var result = [],
+                var exact = [],
+                    synonyms = [],
                     query = new RegExp(query, 'i');
 
                 angular.forEach(MAResourcesList, function(resource) {
-                    if (resource.label.match(query))
-                        result.push(resource);
+                    if (resource.label.match(query)) {
+                        exact.push(resource);
+                    } else if (resource.synonyms && resource.synonyms.match(query)) {  // don't list a type twice
+                        synonyms.push(resource);  // ensure shown below exact matches
+                    }
                 });
 
-                return result;
+                return exact.concat(synonyms);
             }
 
             $scope.resourcesList = MAResourcesList;
