@@ -21,7 +21,9 @@ angular.module('MAResources')
                     }
                 });
 
-                return exact.concat(synonyms);
+                var result = exact.concat(synonyms);
+
+                return result.length ? result : [ MAResourcesList.autre ];
             }
 
             $scope.resourcesList = MAResourcesList;

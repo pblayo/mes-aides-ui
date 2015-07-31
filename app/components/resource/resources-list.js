@@ -218,6 +218,12 @@ angular.module('MAResources').constant('MAResourcesList', (function() {
             label: 'Gains exceptionnels (dons, gains aux jeux, héritage)',
             category: 'Autres',
         },
+
+        autre: {
+            id: 'autre',
+            label: 'Autre',
+            category: 'Autres',
+        },
     };
 
     Object.defineProperty(result, 'getLabelOf', {
