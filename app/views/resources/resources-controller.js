@@ -56,6 +56,9 @@ angular.module('MAResources')
         $scope.options.series = [];
 
         $scope.individu.resources.forEach(function(resource, index) {
+            if (! resource.type)
+                return;  // the user is still constructing the resource
+
             var entryId = 'resource:' + index;
 
             $scope.options.series.push({

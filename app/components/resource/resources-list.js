@@ -200,13 +200,7 @@ angular.module('MAResources').constant('MAResourcesList', (function() {
     Object.defineProperty(result, 'getLabelOf', {
         enumerable: false,
         value: function getLabelOf(id) {
-            if (! id)
-                return;
-
-            if (! result[id])
-                return 'Autre';
-
-            return result[id].label;
+            return id && result[id] && result[id].label;
         }
     });
 

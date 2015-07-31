@@ -7,17 +7,11 @@
 </div>
 
 <div>
-  <h3 ng-hide="newResource"
-    ng-click="newResource = {}"
+  <h3 ng-click="individu.hasResources() ? individu.addResource() : individu.addResource('revenusSalarie', 1135)"
     ng-class="{
       'btn-primary': ! individu.hasResources(),
       'btn-default': individu.hasResources()
     }"
     class="btn btn-lg btn-block"
   >Déclarer un {{ individu.hasResources() ? 'autre' : '' }} revenu</h3>
-
-  <ma-resource-select ng-show="newResource"
-    resource="newResource"
-    on-select="individu.addResource(resourceType); newResource = null"
-  ></ma-resource-select>
 </div>
