@@ -20,7 +20,7 @@ angular.module('MAResources')
                 return result;
             }
 
-            $scope.getLabel = MAResourcesList.getLabelOf;
+            $scope.resourcesList = MAResourcesList;
         }
     }
 });

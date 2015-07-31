@@ -7,7 +7,7 @@ angular.module('MAResources')
             resource: '='
         },
         link: function($scope, element, attrs) {
-            $scope.label = MAResourcesList[$scope.resource.type].label;
+            $scope.label = MAResourcesList.getLabelOf($scope.resource.type) || 'revenus';
 
             var amountInput = element[0].querySelector('input[type="number"]');
             amountInput.focus();

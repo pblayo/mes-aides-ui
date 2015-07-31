@@ -1,7 +1,8 @@
 <input ng-model="resource.type"
   type="text"
-  placeholder="Salaire…"
+  placeholder="{{ resourcesList.getLabelOf('stage') + ', ' + resourcesList.getLabelOf('allocationsChomage') | lowercase }}…"
   typeahead="resourceType.id as resourceType.label for resourceType in matchingResources($viewValue)"
-  typeahead-input-formatter="getLabel($model)"
+  typeahead-input-formatter="resourcesList.getLabelOf($model) | lowercase"
   typeahead-on-select="fireSelect({ resourceType: $model })"
+  title="Indiquez l'origine de ces revenus."
 >

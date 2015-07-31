@@ -11,10 +11,10 @@
     ng-click="newResource = {}"
     ng-class="{
       'btn-primary': ! individu.hasResources(),
-      'btn-link': individu.hasResources()
+      'btn-default': individu.hasResources()
     }"
-    class="btn btn-lg"
-  >Déclarer une {{ individu.hasResources() ? 'autre' : '' }} ressource <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></h3>
+    class="btn btn-lg btn-block"
+  >Déclarer un {{ individu.hasResources() ? 'autre' : '' }} revenu</h3>
 
   <ma-resource-select ng-show="newResource"
     resource="newResource"
