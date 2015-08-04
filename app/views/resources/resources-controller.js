@@ -28,13 +28,12 @@ angular.module('MAResources')
                              + ', vous ';
 
                 if (amount) {
-                    result += 'avez touché des '
-                            + label
-                            + ' de '
+                    result += 'avez perçu '
                             + amount
-                            + ' €';
+                            + ' € en '
+                            + label;
                 } else {
-                    result += 'n’avez pas touché de '
+                    result += 'n’avez pas perçu de '
                             + label;
                 }
 
