@@ -4,232 +4,248 @@ angular.module('MAResources').constant('MAResourcesList', (function() {
             id: 'revenusSalarie',
             label: 'Salaires',
             synonyms: 'Travail, Paie, Primes',
-            category: 'Revenus d’activité',
+            category: 'activite',
         },
         stage: {
             id: 'stage',
             label: 'Stage',
             synonyms: 'Gratification, Stagiaire',
-            category: 'Revenus d’activité',
+            category: 'activite',
         },
         revenusStageFormationPro: {
             id: 'revenusStageFormationPro',
             label: 'Formation professionnelle',
             synonyms: 'Stage',
-            category: 'Revenus d’activité',
+            category: 'activite',
         },
 
         allocationsChomage: {
             id: 'allocationsChomage',
             label: 'Chômage',
             synonyms: 'ARE, Allocation de Retour à l\'Emploi, Chomage, Pôle Emploi, Pole Emploi',
-            category: 'Allocations',
+            category: 'allocation',
         },
         allocationSecurisationPro: {
             id: 'allocationSecurisationPro',
             label: 'Allocation de sécurisation professionnelle',
-            category: 'Allocations',
+            category: 'allocation',
         },
         primeRepriseActivite: {
             id: 'primeRepriseActivite',
             label: 'Prime de reprise d’activité',
             synonyms: 'Prime forfaitaire mensuelle pour la reprise d’activité',
-            category: 'Allocations',
+            category: 'allocation',
         },
         allocationLogement: {
             id: 'allocationLogement',
             label: 'Aides au logement',
             synonyms: 'APL, ALS, ALF',
-            category: 'Allocations',
+            category: 'allocation',
         },
         af: {
             id: 'af',
             label: 'Allocations familiales',
             synonyms: 'AF',
-            category: 'Allocations',
+            category: 'allocation',
         },
         cf: {
             id: 'cf',
             label: 'Complément familial',
             synonyms: 'CF',
-            category: 'Allocations',
+            category: 'allocation',
         },
         asf: {
             id: 'asf',
             label: 'Allocation de soutien familial',
             synonyms: 'ASF',
-            category: 'Allocations',
+            category: 'allocation',
         },
         rsa: {
             id: 'rsa',
             label: 'Revenu de solidarité active',
             synonyms: 'RSA',
-            category: 'Allocations',
+            category: 'allocation',
         },
         aspa: {
             id: 'aspa',
             label: 'Allocation de solidarité aux personnes âgées',
             synonyms: 'ASPA',
-            category: 'Allocations',
+            category: 'allocation',
         },
         asi: {
             id: 'asi',
             label: 'Allocation supplémentaire d’invalidité',
             synonyms: 'ASI',
-            category: 'Allocations',
+            category: 'allocation',
         },
         ass: {
             id: 'ass',
             label: 'Allocation de solidarité spécifique',
             synonyms: 'ASS',
-            category: 'Allocations',
+            category: 'allocation',
         },
         aah: {
             id: 'aah',
             label: 'Allocation adulte handicapé',
             synonyms: 'AAH',
-            category: 'Allocations',
+            category: 'allocation',
         },
         paje: {
             id: 'paje',
             label: 'Prestation d’accueil du jeune enfant',
             synonyms: 'PAJE',
-            category: 'Allocations',
+            category: 'allocation',
         },
         clca: {
             id: 'clca',
             label: 'Complément de libre choix d’activité',
             synonyms: 'CLCA',
-            category: 'Allocations',
+            category: 'allocation',
         },
         prepare: {
             id: 'prepare',
             label: 'Prestation partagée d’éducation de l’enfant',
             synonyms: 'PreParE',
-            category: 'Allocations',
+            category: 'allocation',
         },
 
         indJourMaternite: {
             id: 'indJourMaternite',
             label: 'Indemnités de maternité, paternité, adoption',
-            category: 'Indemnités',
+            category: 'indemnite',
         },
         indJourMaladie: {
             id: 'indJourMaladie',
             label: 'Indemnités maladie',
-            category: 'Indemnités',
+            category: 'indemnite',
         },
         indJourMaladieProf: {
             id: 'indJourMaladieProf',
             label: 'Indemnités maladie professionnelle',
-            category: 'Indemnités',
+            category: 'indemnite',
         },
         indJourAccidentDuTravail: {
             id: 'indJourAccidentDuTravail',
             label: 'Indemnités d’accident du travail',
-            category: 'Indemnités',
+            category: 'indemnite',
         },
         indChomagePartiel: {
             id: 'indChomagePartiel',
             label: 'Indemnités d’activité partielle',
-            category: 'Indemnités',
+            category: 'indemnite',
         },
         indVolontariat: {
             id: 'indVolontariat',
             label: 'Indemnités de volontariat',
-            category: 'Indemnités',
+            category: 'indemnite',
         },
         dedommagementAmiante: {
             id: 'dedommagementAmiante',
             label: 'Dédommagement aux victimes de l’amiante',
-            category: 'Indemnités',
+            category: 'indemnite',
         },
 
         pensionsAlimentaires: {
             id: 'pensionsAlimentaires',
             label: 'Pensions alimentaires',
-            category: 'Pensions',
+            category: 'pension',
         },
         pensionsAlimentairesVersees: {
             id: 'pensionsAlimentairesVersees',
             label: 'Pensions alimentaires versées',
-            category: 'Pensions',
+            category: 'pension',
         },
         prestationCompensatoire: {
             id: 'prestationCompensatoire',
             label: 'Prestation compensatoire',
             synonyms: 'Séparation, Separation',
-            category: 'Pensions',
+            category: 'pension',
         },
         pensionsRetraitesRentes: {
             id: 'pensionsRetraitesRentes',
             label: 'Retraites et rentes',
             synonyms: 'Réversion, Reversion',
-            category: 'Pensions',
+            category: 'pension',
         },
         retraiteCombattant: {
             id: 'retraiteCombattant',
             label: 'Retraite du combattant',
-            category: 'Pensions',
+            category: 'pension',
         },
         pensionsInvalidite: {
             id: 'pensionsInvalidite',
             label: 'Pensions d’invalidité',
-            category: 'Pensions',
+            category: 'pension',
         },
 
         caMicroEntreprise: {
             id: 'caMicroEntreprise',
             label: 'Micro-entreprise',
             synonyms: 'Chiffre d\'affaire, CA, Prestation, Facturation',
-            category: 'Revenus professionnels non salariés',
+            category: 'nonSalarie',
         },
         caAutoEntrepreneur: {
             id: 'caAutoEntrepreneur',
             label: 'Auto-entrepreneur',
             synonyms: 'Chiffre d\'affaire, CA, Prestation, Facturation',
-            category: 'Revenus professionnels non salariés',
+            category: 'nonSalarie',
         },
         revenusAgricolesTns: {
             id: 'revenusAgricolesTns',
             label: 'Exploitant agricole',
             synonyms: 'Chiffre d\'affaire, CA, Exploitation, Agriculteur',
-            category: 'Revenus professionnels non salariés',
+            category: 'nonSalarie',
         },
         autresRevenusTns: {
             id: 'autresRevenusTns',
             label: 'Profession libérale, entrepreneur',
             synonyms: 'Chiffre d\'affaire, CA, Prestation, Facturation',
-            category: 'Revenus professionnels non salariés',
+            category: 'nonSalarie',
         },
 
         bourseEnseignementSup: {
             id: 'bourseEnseignementSup',
             label: 'Bourses de l’enseignement supérieur',
-            category: 'Autres',
+            category: 'autre',
         },
         bourseRecherche: {
             id: 'bourseRecherche',
             label: 'Bourse de recherche',
-            category: 'Autres',
+            category: 'autre',
         },
         gainsExceptionnels: {
             id: 'gainsExceptionnels',
             label: 'Gains exceptionnels (dons, gains aux jeux, héritage)',
-            category: 'Autres',
+            category: 'autre',
         },
 
         autre: {
             id: 'autre',
             label: 'Autre',
-            category: 'Autres',
+            category: 'autre',
         },
     };
 
-    Object.defineProperty(result, 'getLabelOf', {
-        enumerable: false,
-        value: function getLabelOf(id) {
-            return id && result[id] && result[id].label;
+    Object.defineProperties(result, {
+        getLabelOf: {
+            value: function getLabelOf(id) {
+                return id && result[id] && result[id].label;
+            }
+        },
+
+        byCategory: {
+            get: function() {
+                return _.groupBy(result, 'category');
+
+                var byCategory = {};
+
+                angular.forEach(result, function(type) {
+                    byCategory[type.category] = byCategory[type.category] || [];
+                    byCategory[type.category].push(type);
+                });
+
+                return byCategory;
+            }
         }
     });
 
