@@ -10,7 +10,12 @@ angular.module('MAResources')
                 key: 'date',
                 type: 'date',
                 ticksFormatter: function formatDate(date) {
-                    return moment(date).format('MMM YYYY');
+                    var format = 'MMMM';
+
+                    if (date.getMonth() == 0 || date.getMonth() == new Date().getMonth())
+                        format = 'YYYY';
+
+                    return moment(date).format(format);
                 }
             },
             y: {
