@@ -1,5 +1,5 @@
 angular.module('MAResources')
-.controller('MAResourcesController', function($scope, MASituation, MAResourcesList) {
+.controller('MAResourcesController', function($scope, MASituation, MAResourcesList, MAResourcesCategoriesList) {
     $scope.individu = MASituation.individus[0];
 
     $scope.options = {
@@ -60,7 +60,9 @@ angular.module('MAResources')
         $scope.options.series = [];
 
         $scope.individu.resources.forEach(function(resource, index) {
-            if (! resource.type)
+            var resourceType = MAResourcesList[resource.type];
+
+            if (! resourceType)
                 return;  // the user is still constructing the resource
 
             var entryId = 'resource:' + index;
@@ -68,8 +70,8 @@ angular.module('MAResources')
             $scope.options.series.push({
                 id: entryId,
                 y: entryId,
-                label: MAResourcesList.getLabelOf(resource.type),
-                color: 'hsl(' + (45 * resource.type.length) + ',100%,' + (60 - 15 * index ) + '%)',
+                label: resourceType.label,
+                color: MAResourcesCategoriesList[resourceType.category].color,
                 thickness: '0px',
                 type: 'area'
             });
