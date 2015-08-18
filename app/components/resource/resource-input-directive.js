@@ -7,7 +7,7 @@ angular.module('MAResources')
             resource: '='
         },
         link: function($scope, element, attrs) {
-            $scope.label = MAResourcesList.getLabelOf($scope.resource.type) || 'revenus';
+            $scope.label = MAResourcesList.getLabelOf($scope.resource.type) || 'rentrées d’argent';
         }
     }
 });
