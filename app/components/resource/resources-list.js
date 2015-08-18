@@ -3,7 +3,12 @@ angular.module('MAResources').constant('MAResourcesList', (function() {
         revenusSalarie: {
             id: 'revenusSalarie',
             label: 'Salaires',
-            synonyms: 'Travail, Paie, Primes',
+            synonyms: 'Travail, Paie',
+            category: 'activite',
+        },
+        primes: {
+            id: 'primes',
+            label: 'Primes',
             category: 'activite',
         },
         stage: {
@@ -16,6 +21,30 @@ angular.module('MAResources').constant('MAResourcesList', (function() {
             id: 'revenusStageFormationPro',
             label: 'Formation professionnelle',
             synonyms: 'Stage',
+            category: 'activite',
+        },
+        caMicroEntreprise: {
+            id: 'caMicroEntreprise',
+            label: 'Micro-entreprise',
+            synonyms: 'Chiffre d\'affaire, CA, Prestation, Facturation',
+            category: 'activite',
+        },
+        caAutoEntrepreneur: {
+            id: 'caAutoEntrepreneur',
+            label: 'Auto-entrepreneur',
+            synonyms: 'Chiffre d\'affaire, CA, Prestation, Facturation',
+            category: 'activite',
+        },
+        revenusAgricolesTns: {
+            id: 'revenusAgricolesTns',
+            label: 'Exploitant agricole',
+            synonyms: 'Chiffre d\'affaire, CA, Exploitation, Agriculteur',
+            category: 'activite',
+        },
+        autresRevenusTns: {
+            id: 'autresRevenusTns',
+            label: 'Profession libérale, entrepreneur',
+            synonyms: 'Chiffre d\'affaire, CA, Prestation, Facturation',
             category: 'activite',
         },
 
@@ -150,26 +179,10 @@ angular.module('MAResources').constant('MAResourcesList', (function() {
             label: 'Pensions alimentaires',
             category: 'pension',
         },
-        pensionsAlimentairesVersees: {
-            id: 'pensionsAlimentairesVersees',
-            label: 'Pensions alimentaires versées',
-            category: 'pension',
-        },
         prestationCompensatoire: {
             id: 'prestationCompensatoire',
             label: 'Prestation compensatoire',
             synonyms: 'Séparation, Separation',
-            category: 'pension',
-        },
-        pensionsRetraitesRentes: {
-            id: 'pensionsRetraitesRentes',
-            label: 'Retraites et rentes',
-            synonyms: 'Réversion, Reversion',
-            category: 'pension',
-        },
-        retraiteCombattant: {
-            id: 'retraiteCombattant',
-            label: 'Retraite du combattant',
             category: 'pension',
         },
         pensionsInvalidite: {
@@ -178,29 +191,16 @@ angular.module('MAResources').constant('MAResourcesList', (function() {
             category: 'pension',
         },
 
-        caMicroEntreprise: {
-            id: 'caMicroEntreprise',
-            label: 'Micro-entreprise',
-            synonyms: 'Chiffre d\'affaire, CA, Prestation, Facturation',
-            category: 'nonSalarie',
+        pensionsRetraitesRentes: {
+            id: 'pensionsRetraitesRentes',
+            label: 'Retraites et rentes',
+            synonyms: 'Réversion, Reversion',
+            category: 'retraite',
         },
-        caAutoEntrepreneur: {
-            id: 'caAutoEntrepreneur',
-            label: 'Auto-entrepreneur',
-            synonyms: 'Chiffre d\'affaire, CA, Prestation, Facturation',
-            category: 'nonSalarie',
-        },
-        revenusAgricolesTns: {
-            id: 'revenusAgricolesTns',
-            label: 'Exploitant agricole',
-            synonyms: 'Chiffre d\'affaire, CA, Exploitation, Agriculteur',
-            category: 'nonSalarie',
-        },
-        autresRevenusTns: {
-            id: 'autresRevenusTns',
-            label: 'Profession libérale, entrepreneur',
-            synonyms: 'Chiffre d\'affaire, CA, Prestation, Facturation',
-            category: 'nonSalarie',
+        retraiteCombattant: {
+            id: 'retraiteCombattant',
+            label: 'Retraite du combattant',
+            category: 'retraite',
         },
 
         bourseEnseignementSup: {

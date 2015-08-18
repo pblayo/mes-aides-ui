@@ -19,10 +19,10 @@ angular.module('MAResources').constant('MAResourcesCategoriesList', {
         label: 'Pensions',
         color: '#0FF',
     },
-    nonSalarie: {
-        id: 'nonSalarie',
-        label: 'Revenus professionnels non salariés',
-        color: '#00F',
+    retraite: {
+        id: 'retraite',
+        label: 'Retraites',
+        color: '#55F',
     },
     autre: {
         id: 'autre',
