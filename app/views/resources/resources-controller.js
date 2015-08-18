@@ -4,7 +4,6 @@ angular.module('MAResources')
 
     $scope.options = {
         drawLegend: false,
-        drawDots: true,
         axes: {
             x: {
                 key: 'date',
