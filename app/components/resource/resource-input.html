@@ -11,7 +11,7 @@
   &nbsp;€
 </label>
 
-en {{ label | lowercase }}
+en <span ng-bind="label | lowercase" ng-style="{ 'background-color': category.color }"></span>
 
 perçus en :
 <br/>

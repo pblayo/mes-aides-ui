@@ -1,5 +1,5 @@
 angular.module('MAResources')
-.directive('maResourceInput', function(MAResourcesList) {
+.directive('maResourceInput', function(MAResourcesList, MAResourcesCategoriesList) {
     return {
         restrict: 'E',
         templateUrl: '/components/resource/resource-input.html',
@@ -7,7 +7,10 @@ angular.module('MAResources')
             resource: '='
         },
         link: function($scope, element, attrs) {
-            $scope.label = MAResourcesList.getLabelOf($scope.resource.type) || 'rentrées d’argent';
+            var resourceType = MAResourcesList[$scope.resource.type];
+
+            $scope.label = resourceType.label || 'rentrées d’argent';
+            $scope.category = MAResourcesCategoriesList[resourceType.category];
         }
     }
 });
