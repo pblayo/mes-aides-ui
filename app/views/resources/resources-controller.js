@@ -3,7 +3,7 @@ angular.module('MAResources')
     $scope.individu = MASituation.individus[0];
 
     $scope.options = {
-        drawLegend: true,
+        drawLegend: false,
         drawDots: true,
         axes: {
             x: {
