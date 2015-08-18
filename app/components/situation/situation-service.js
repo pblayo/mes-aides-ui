@@ -86,7 +86,6 @@ Individu.prototype.addResource = function addResource(resourceType, value, earne
         type: resourceType,
         value: value || 0,
         earnedOn: earnedOn || {
-            '2014-07': true,
             '2014-08': true,
             '2014-09': true,
             '2014-10': true,
@@ -98,7 +97,8 @@ Individu.prototype.addResource = function addResource(resourceType, value, earne
             '2015-04': true,
             '2015-05': true,
             '2015-06': true,
-            '2015-07': true
+            '2015-07': true,
+            '2015-08': true,
         }
     });
 }
