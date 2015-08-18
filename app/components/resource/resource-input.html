@@ -16,11 +16,16 @@ en <span ng-bind="label | lowercase" ng-style="{ 'background-color': category.co
 perçus en :
 <br/>
 
-<label ng-repeat="(month, earned) in resource.earnedOn"
-  title="Cochez si vous avez perçu {{ resource.value }} € de {{ label }} en {{ month | formatDate:'MMMM YYYY' }}".>
-  {{ month | formatDate:'MMM YYYY' }}
-  <input ng-model="resource.earnedOn[month]"
-    type="checkbox"
-    class="checkbox"
-    >
-</label>
+<div class="btn-group" data-toggle="buttons" role="group" aria-label="Mois de perception">
+  <label ng-repeat="(month, earned) in resource.earnedOn"
+    ng-class="{ active: resource.earnedOn[month] }"
+    class="btn btn-xs btn-primary"
+    title="Cochez si vous avez perçu {{ resource.value }} € de {{ label }} en {{ month | formatDate:'MMMM YYYY' }}.">
+    <strong ng-if="$first || month.indexOf('-01') > -1">{{ month | formatDate:'YYYY' }}</strong>
+    {{ month | formatDate:'MMMM' }}
+    <input ng-model="resource.earnedOn[month]"
+      type="checkbox"
+      class="checkbox"
+      >
+  </label>
+</div>
