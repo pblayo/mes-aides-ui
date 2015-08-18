@@ -9,8 +9,8 @@
 <div>
   <h3 ng-click="individu.hasResources() ? individu.addResource() : individu.addResource('revenusSalarie', 1135)"
     ng-class="{
-      'btn-primary': ! individu.hasResources(),
-      'btn-default': individu.hasResources()
+      'btn-success': ! individu.hasResources(),
+      'btn-primary': individu.hasResources()
     }"
     class="btn btn-lg btn-block"
   >Déclarer une {{ individu.hasResources() ? 'autre' : '' }} rentrée d'argent</h3>
