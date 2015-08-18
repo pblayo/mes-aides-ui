@@ -14,7 +14,6 @@
 <div class="text-right">
   <button type="submit"
     ng-click="$state.go('foyer.pensionsAlimentaires')"
-    ng-class="{ 'btn-success': individu.hasResources() }"
-    class="btn btn-lg"
-  >Valider</button>
+    class="btn btn-lg btn-success"
+  >{{ individu.hasResources() ? 'Valider' : 'Je n’ai aucune rentrée d’argent' }}</button>
 </div>
