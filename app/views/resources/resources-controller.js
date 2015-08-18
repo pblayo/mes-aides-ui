@@ -19,6 +19,7 @@ angular.module('MAResources')
                 }
             },
             y: {
+                min: 0,
                 ticks: 4,
                 ticksFormatter: function formatCurrency(amount) {
                     return amount + ' €';
@@ -73,7 +74,7 @@ angular.module('MAResources')
                 label: resourceType.label,
                 color: MAResourcesCategoriesList[resourceType.category].color,
                 thickness: '0px',
-                type: 'area'
+                type: 'column'
             });
 
             $scope.options.stacks[0].series.push(entryId);
