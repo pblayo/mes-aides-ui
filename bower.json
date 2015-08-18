@@ -31,7 +31,7 @@
     "moment": "~2.7.0",
     "lodash": "~2.4.1",
     "font-awesome": "~4.2",
-    "n3-line-chart": "~1.1.10"
+    "n3-line-chart": "~1.1.11"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.22"
