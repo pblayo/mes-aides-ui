@@ -2,6 +2,8 @@ angular.module('MAResources')
 .controller('MAResourcesController', function($scope, MASituation, MAResourcesList, MAResourcesCategoriesList) {
     $scope.individu = MASituation.individus[0];
 
+    var today = new Date()
+
     $scope.options = {
         drawLegend: false,
         axes: {
@@ -9,9 +11,10 @@ angular.module('MAResources')
                 key: 'date',
                 type: 'date',
                 ticksFormatter: function formatDate(date) {
-                    var format = 'MMMM';
+                    var format = 'MMM';
 
-                    if (date.getMonth() == 0 || date.getMonth() == new Date().getMonth())
+                    if (date.getMonth() == 0  // replace January by year
+                        || (date.getMonth() == today.getMonth() && date.getFullYear() != today.getFullYear()))  // replace first column label by year
                         format = 'YYYY';
 
                     return moment(date).format(format);
