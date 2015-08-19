@@ -4,9 +4,13 @@ angular.module('MAResources')
         restrict: 'E',
         templateUrl: '/components/resource/resource-input.html',
         scope: {
-            resource: '='
+            resource: '=',
+            autofocus: '&'
         },
         link: function($scope, element, attrs) {
+            if ($scope.autofocus())
+                element.find('input')[0].focus();
+
             var resourceType = MAResourcesList[$scope.resource.type];
 
             $scope.label = resourceType.label || 'rentrées d’argent';

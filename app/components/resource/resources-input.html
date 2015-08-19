@@ -18,16 +18,8 @@
 </div>
 
 <div ng-if="newResource">
-  <ma-resource-input resource="newResource"></ma-resource-input>
+  <ma-resource-input resource="newResource" autofocus="true"></ma-resource-input>
   <button ng-click="individu.addResource(newResource); $parent.newResource = null"
     class="btn btn-primary"
   >Valider</button>
-</div>
-
-<div ng-repeat="resource in individu.resources">
-  <ma-resource-input resource="resource"></ma-resource-input>
-  <button ng-click="individu.removeResource(resource)"
-    class="btn btn-xs btn-link"
-    ng-repeat-end
-  >Supprimer</button>
 </div>

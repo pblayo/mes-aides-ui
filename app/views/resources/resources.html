@@ -10,6 +10,13 @@
     ng-show="individu.hasResources()"
   ></linechart>
 
+  <div ng-repeat="resource in individu.resources">
+    <ma-resource-input resource="resource" autofocus="false"></ma-resource-input>
+    <button ng-click="individu.removeResource(resource)"
+      class="btn btn-xs btn-link"
+      ng-repeat-end
+    >Supprimer</button>
+  </div>
 </ui-view>
 
 <div class="text-right">
