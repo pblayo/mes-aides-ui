@@ -11,9 +11,8 @@
     <button ng-repeat="(id, category) in categories"
       class="btn"
       ng-style="{ 'background-color': category.color }"
-      ng-bind="category.label"
       ng-click="$parent.selectedCategory = category"
-    ></button>
+    >{{ $parent.selectedCategory == category ? '▼' : '▶' }} {{ category.label }}</button>
   </div>
 
   <div class="btn-group" role="group" aria-label="Nature de rentrée d'argent">
