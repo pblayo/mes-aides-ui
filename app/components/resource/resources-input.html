@@ -11,7 +11,7 @@
     <button ng-repeat="(id, category) in categories"
       class="btn"
       ng-style="{ 'background-color': category.color }"
-      ng-click="$parent.selectedCategory = category"
+      ng-click="$parent.selectedCategory = ($parent.selectedCategory == category ? '' : category)"
     >{{ $parent.selectedCategory == category ? '▼' : '▶' }} {{ category.label }}</button>
   </div>
 
