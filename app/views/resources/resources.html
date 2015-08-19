@@ -1,6 +1,6 @@
 <ui-view id="resources-pane">
-  <h1>Vos rentrées d'argent</h1>
-  <p class="help-block">Perçues en France et à l'étranger. Votre simulation sera plus précise si vous entrez des valeurs exactes.</p>
+  <h1>Déclarez toutes vos rentrées d'argent</h1>
+  <p class="help-block">Perçues en France et à l'étranger depuis {{ oneYearAgo | formatDate:'MMMM YYYY' }}. Votre simulation sera plus précise si vous entrez des valeurs exactes.</p>
 
   <ma-resources-input individu="individu"></ma-resources-input>
 
@@ -20,5 +20,8 @@
       'btn-primary': ! individu.hasResources()
     }"
     class="btn btn-lg"
-  >{{ individu.hasResources() ? 'Valider' : 'Je n’ai aucune rentrée d’argent' }}</button>
+  >
+    <span ng-show="individu.hasResources()">Valider</span>
+    <span ng-show="! individu.hasResources()">Je n’ai eu aucune rentrée d’argent depuis {{ oneYearAgo | formatDate:'MMMM YYYY'}}</span>
+  </button>
 </div>

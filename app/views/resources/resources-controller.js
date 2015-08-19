@@ -1,5 +1,7 @@
 angular.module('MAResources')
 .controller('MAResourcesController', function($scope, MASituation, MAResourcesList, MAResourcesCategoriesList) {
+    $scope.oneYearAgo = moment().subtract('years', 1);
+
     $scope.individu = MASituation.individus[0];
 
     var today = new Date()
