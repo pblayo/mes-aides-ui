@@ -21,7 +21,7 @@
   <button ng-if="! individu.hasResources() && ! type.id"
     type="submit"
     ng-style="{ 'margin-top': '4em' }"
-    ng-click="$state.go('foyer.pensionsAlimentaires')"
+    ng-click="$state.go('foyer.simulation')"
     class="btn btn-link center-block"
   >Je n’ai eu aucune rentrée d’argent depuis {{ oneYearAgo | formatDate:'MMMM YYYY'}}</button>
 
@@ -37,7 +37,7 @@
       >Déclarer une autre rentrée d'argent</button>
 
       <button type="submit"
-        ng-click="$state.go('foyer.pensionsAlimentaires')"
+        ng-click="$state.go('foyer.simulation')"
         class="btn btn-lg btn-success"
       >Lancer la simulation</button>
     </div>
