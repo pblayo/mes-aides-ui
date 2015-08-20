@@ -12,14 +12,7 @@
       class="btn"
       ng-style="{ 'background-color': selectedCategory.color }"
       ng-bind="type.label"
-      ng-click="createResource(type.id); $parent.selectedCategory = ''"
+      ng-click="setType(type); $parent.selectedCategory = ''"
     ></button>
   </div>
-</div>
-
-<div ng-if="newResource">
-  <ma-resource-input resource="newResource" autofocus="true"></ma-resource-input>
-  <button ng-click="individu.addResource(newResource); $parent.newResource = null"
-    class="btn btn-primary"
-  >Valider</button>
 </div>

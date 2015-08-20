@@ -1,6 +1,12 @@
 angular.module('MAResources')
-.controller('MAResourcesController', function($scope, MASituation, MAResourcesList, MAResourcesCategoriesList) {
+.controller('MAResourcesController', function($scope, MASituation, MAResourcesList, MAResourcesCategoriesList, MAResource) {
     $scope.oneYearAgo = moment().subtract('years', 1);
+
+    $scope.type = {};
+
+    $scope.createResource = function createResource(type) {
+        return new MAResource.Resource(type.id);
+    }
 
     $scope.individu = MASituation.individus[0];
 

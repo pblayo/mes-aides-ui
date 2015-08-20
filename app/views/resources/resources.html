@@ -1,35 +1,54 @@
 <ui-view id="resources-pane">
-  <h1>Déclarez toutes vos rentrées d'argent</h1>
-  <p class="help-block">Perçues en France et à l'étranger depuis {{ oneYearAgo | formatDate:'MMMM YYYY' }}. Votre simulation sera plus précise si vous entrez des valeurs exactes.</p>
+  <h1>Vos rentrées d'argent depuis {{ oneYearAgo | formatDate:'MMMM YYYY' }}</h1>
+  <p class="help-block">Perçues en France et à l'étranger. Votre simulation sera plus précise si vous entrez des valeurs exactes.</p>
 
-  <ma-resources-input individu="individu"></ma-resources-input>
+  <ma-resource-type-select ng-if="! type.id"
+    type="type"
+    on-select="$parent.newResource = createResource(type)"
+  ></ma-resource-type-select>
 
-  <linechart data="chartableResources"
-    options="options"
-    height="200"
-    ng-show="individu.hasResources()"
-  ></linechart>
+  <ma-resource-input ng-if="newResource"
+    resource="newResource"
+    autofocus="true"
+  ></ma-resource-input>
 
-  <div ng-repeat="resource in individu.resources">
-    <ma-resource-input resource="resource" autofocus="false"></ma-resource-input>
-    <button ng-click="individu.removeResource(resource)"
-      class="btn btn-xs btn-link"
-      ng-repeat-end
-    >Supprimer</button>
+  <button type="submit"
+    ng-show="newResource"
+    ng-click="individu.addResource(newResource); newResource = null"
+    class="btn btn-success"
+  >Valider</button>
+
+  <button ng-if="! individu.hasResources() && ! type.id"
+    type="submit"
+    ng-style="{ 'margin-top': '4em' }"
+    ng-click="$state.go('foyer.pensionsAlimentaires')"
+    class="btn btn-link center-block"
+  >Je n’ai eu aucune rentrée d’argent depuis {{ oneYearAgo | formatDate:'MMMM YYYY'}}</button>
+
+  <div ng-show="individu.hasResources() && type.id && ! newResource">
+    <linechart data="chartableResources"
+      options="options"
+      height="200"
+    ></linechart>
+
+    <div class="text-center">
+      <button ng-click="type = {}"
+        class="btn btn-lg btn-primary"
+      >Déclarer une autre rentrée d'argent</button>
+
+      <button type="submit"
+        ng-click="$state.go('foyer.pensionsAlimentaires')"
+        class="btn btn-lg btn-success"
+      >Lancer la simulation</button>
+    </div>
+
+    <div ng-repeat="resource in individu.resources"
+      ng-style="{ 'margin-top': '2em' }">
+      <ma-resource-input resource="resource" autofocus="false"></ma-resource-input>
+      <button ng-click="individu.removeResource(resource)"
+        class="btn btn-xs btn-link"
+        ng-repeat-end
+      >Supprimer</button>
+    </div>
   </div>
 </ui-view>
-
-<br>
-<div class="text-right">
-  <button type="submit"
-    ng-click="$state.go('foyer.pensionsAlimentaires')"
-    ng-class="{
-      'btn-success': individu.hasResources(),
-      'btn-primary': ! individu.hasResources()
-    }"
-    class="btn btn-lg"
-  >
-    <span ng-show="individu.hasResources()">Valider</span>
-    <span ng-show="! individu.hasResources()">Je n’ai eu aucune rentrée d’argent depuis {{ oneYearAgo | formatDate:'MMMM YYYY'}}</span>
-  </button>
-</div>
