@@ -12,11 +12,13 @@
     autofocus="true"
   ></ma-resource-input>
 
-  <button type="submit"
-    ng-show="newResource"
-    ng-click="individu.addResource(newResource); newResource = null"
-    class="btn btn-success"
-  >Valider</button>
+  <div class="text-right">
+    <button type="submit"
+      ng-show="newResource"
+      ng-click="individu.addResource(newResource); newResource = null"
+      class="btn btn-success"
+    >Valider</button>
+  </div>
 
   <button ng-if="! individu.hasResources() && ! type.id"
     type="submit"

@@ -653,3 +653,16 @@ $autre-lighter: #cce4e7;
   border-bottom: 1px dashed;
   cursor: help;
 }
+
+#resources-pane .months {
+  display: flex;
+
+  label {
+    flex: 1 1;
+    padding-top: 1em;
+  }
+
+  input[type=checkbox] {
+    transform: scale(1.5);
+  }
+}
