@@ -24,10 +24,7 @@ angular.module('MAResources')
             },
             y: {
                 min: 0,
-                ticks: 4,
-                ticksFormatter: function formatCurrency(amount) {
-                    return amount + ' €';
-                }
+                ticks: 0,
             }
         },
         tooltip: {
