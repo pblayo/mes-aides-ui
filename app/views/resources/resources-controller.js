@@ -10,7 +10,7 @@ angular.module('MAResources')
 
     $scope.individu = MASituation.individus[0];
 
-    var today = new Date()
+    var today = new Date();
 
     $scope.options = {
         drawLegend: false,
