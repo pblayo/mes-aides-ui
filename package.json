@@ -22,7 +22,7 @@
     "test-integration": "watai test/integration",
     "test-unit": "mocha --compilers js:babel/register ${1:-test/unit}",
     "stop-test-integration": "pm2 stop node_modules/.bin/selenium",
-    "lint": "eslint . --ignore-pattern=test/integration/*"
+    "lint": "eslint --ignore-pattern=test/integration/* ${1:-.}"
   },
   "dependencies": {
     "babel": "^5.8.21",
