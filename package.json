@@ -50,6 +50,7 @@
     "mocha": "^2.3.2",
     "pm2": "^0.14.7",
     "selenium-server": "^2.47.1",
+    "stylelint": "^2.0.0",
     "watai": "^0.6.2"
   }
 }
