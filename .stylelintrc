@@ -1,6 +1,6 @@
 {
     "rules": {
-        "indentation": [ 2, "space", { "count": 4 } ],
+        "indentation": [ 2, 4 ],
         "string-quotes": [ 2, "single" ],
         "function-url-quotes": [ 2, "single"],
         "rule-trailing-semicolon": [ 2, "always" ],
