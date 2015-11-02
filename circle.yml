@@ -38,13 +38,17 @@ test:
         parallel: true
 
   override:
-    - npm run lint:
+    - npm run lint-js:
         parallel: true
         files:
           - index.js
           - server.js
           - routes.js
           - test/unit/**/*.js
+    - npm run lint-css:
+        parallel: true
+        files:
+          - css/*.css
     - npm run test-unit:
         parallel: true
         files:
