@@ -62,6 +62,15 @@ export default [{
     },
 },
 {
+    method: 'GET',
+    path: '/statuts-particuliers-etrangers',
+    handler: (request, reply) => {
+        view(reply, 'foreigner-special-statuses', {
+            isQuestion: true,
+        });
+    },
+},
+{
     method: 'POST',
     path: '/resultat',
     handler: (request, reply) => {
