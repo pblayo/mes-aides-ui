@@ -34,6 +34,7 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
+    "array.from": "^1.0.0",
     "babel-cli": "^6.5.1",
     "babel-core": "^6.5.1",
     "babel-plugin-transform-es2015-destructuring": "^6.5.0",
