@@ -1,2 +1,5 @@
-require('es6-promise').polyfill();  // needs to leak into global namespace for fetch polyfill
-require('isomorphic-fetch');  // needs to leak into global namespace for mocking
+import promise from 'es6-promise';
+
+promise.polyfill();  // needs to leak into global namespace for fetch polyfill
+
+import 'isomorphic-fetch';  // needs to leak into global namespace for mocking

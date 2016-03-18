@@ -1,1 +1,1 @@
-require('./date-today');
+import './date-today';
