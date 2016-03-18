@@ -1,3 +1,3 @@
 export default function updateRecap(state) {
-    document.getElementById('situation').value = JSON.stringify(state.openfiscaSituation);
+    document.querySelector('#recap textarea').value = JSON.stringify(state.openfiscaSituation);
 }

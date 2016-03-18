@@ -1,0 +1,25 @@
+<h1>Vous avez une nationalité</h1>
+
+<form class="ui form" method="post" action="/logement">
+    <div class="grouped inline fields">
+        <label class="ui radio checkbox">
+            <input checked required type="radio" name="individus.0.ressortissant_eee" value="true">
+            Française,
+            <abbr title="Allemagne, Autriche, Belgique, Bulgarie, Chypre, Croatie, Danemark, Espagne, Estonie, Finlande, Grèce, Hongrie, Irlande, Italie, Lettonie, Lituanie, Luxembourg, Malte, Pays-Bas, Pologne, Portugal, République tchèque, Roumanie, Royaume-Uni, Slovaquie, Slovénie, Suède">européenne</abbr>
+            ou <abbr title="Suisse, Norvège, Islande, Liechtenstein">assimilée</abbr>
+        </label>
+        <label class="ui radio checkbox">
+            <input required type="radio" name="individus.0.ressortissant_eee" value="false">
+            Autre
+        </label>
+
+        <div data-for="required">
+            <div class="ui error message">
+                <h2 class="header">Question obligatoire</h2>
+                <p>Selon votre nationalité, votre éligibilité à des prestations sociales telles que le RSA ou l'ASPA dépend du temps que vous avez passé en France.</p>
+            </div>
+        </div>
+    </div>
+
+    <input class="ui submit button" type="submit" value="Valider"/>
+</form>

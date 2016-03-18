@@ -6,8 +6,7 @@ import { reverseMap } from './openfisca/parse';
 import AIDES from './config/aides';
 
 
-export default [
-{
+export default [{
     method: 'GET',
     path: '/',
     handler: (request, reply) => {
@@ -40,6 +39,24 @@ export default [
     path: '/code-postal',
     handler: (request, reply) => {
         view(reply, 'postal-code', {
+            isQuestion: true,
+        });
+    },
+},
+{
+    method: 'GET',
+    path: '/nationalite',
+    handler: (request, reply) => {
+        view(reply, 'nationality', {
+            isQuestion: true,
+        });
+    },
+},
+{
+    method: 'GET',
+    path: '/titre-sejour',
+    handler: (request, reply) => {
+        view(reply, 'stay-permit', {
             isQuestion: true,
         });
     },
@@ -106,8 +123,7 @@ export default [
             });
         });
     },
-},
-]
+}]
 
 
 function view(reply, name, data) {
