@@ -32,13 +32,14 @@ NE MODIFIEZ PAS LE CONTENU CI-DESSOUS
 document.getElementById('createTest').addEventListener('click', event => {
     const url = ludwig.generateSuggestionURL(
         store.getState().openfiscaSituation,
-        { individus: store.getState().openfiscaSituation.individus },  // work only on individuals to avoid too large tests; should evolve to test for family-based prestations
+        store.getState().openfiscaSituation,
         (template, actual, expected) => {
-            return template + YAML.stringify(expected, 20, 2);
+            const demoString = YAML.stringify(expected, 20, 2).slice(0, 300);  // work around URI size limit for demo purposes
+            return `${template}${demoString}[more content missing…]`;
         }
     );
 
-    window.open(url);
+    window.location = url;
 });
 
 document.getElementById('showTests').href = ludwig.acceptedTestsURL();
