@@ -9,12 +9,10 @@ import {
 } from '../actions';
 
 
-export default {
-    route(state) {
-        if (state.suggestions && state.suggestions.length)
-            return 'ville';
-    }
-};
+export function route(state) {
+    if (state.suggestions && state.suggestions.length)
+        return 'ville';
+}
 
 if (typeof window != 'undefined') {  // allow testing on the backend
     document.querySelector('input[name="postalCode"]')

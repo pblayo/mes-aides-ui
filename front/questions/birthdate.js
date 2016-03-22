@@ -3,17 +3,15 @@ import moment from 'moment';
 import { createErrorAction } from '../actions';
 
 
-export default {
-    validate(dateInput) {
-        const birthdate = parse(dateInput.value);
+export function validate(dateInput) {
+    const birthdate = parse(dateInput.value);
 
-        if (! birthdate.isValid())
-            return createErrorAction(this.openFiscaPropertyPath, 'invalid', dateInput.value);
-    },
+    if (! birthdate.isValid())
+        return createErrorAction(this.openFiscaPropertyPath, 'invalid', dateInput.value);
+}
 
-    format(date) {
-        return parse(date).format('YYYY-MM-DD');
-    }
+export function format(date) {
+    return parse(date).format('YYYY-MM-DD');
 }
 
 function parse(date) {
