@@ -1,4 +1,4 @@
-require('isomorphic-fetch');  // needs to leak into global namespace for mocking
+import 'isomorphic-fetch';  // needs to leak into global namespace for mocking
 import mock from 'fetch-mock';
 
 

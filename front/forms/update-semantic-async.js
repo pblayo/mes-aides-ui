@@ -16,7 +16,7 @@ export default function updateLoaders(state) {
 }
 
 function setVisibility(shouldShow) {
-    Array.prototype.forEach.call(document.querySelectorAll('.ui.loader'), loader => {
+    [ ...document.querySelectorAll('.ui.loader') ].forEach(loader => {
         loader.classList[  // IE>9 compatible only
             shouldShow
             ? 'add'
