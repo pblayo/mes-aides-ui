@@ -27,5 +27,6 @@ module.exports = {
                 loader: 'json',
             },
         ],
+        noParse: [ /moment.js$/ ],  // avoid loading all locales by default, see https://github.com/webpack/webpack/issues/198
     },
 }
