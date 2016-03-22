@@ -3,11 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
-        'birthdate': './front/questions/birthdate.js',
-        'nationality': './front/questions/nationality.js',
-        'housing': './front/questions/housing.js',
-        'postal-code': './front/questions/postal-code.js',
-        'stay-permit': './front/questions/stay-permit.js',
+        'questions': './front/questions/index.js',
         'lib': './front/lib/index.js',
     },
     output: {
@@ -19,7 +15,7 @@ module.exports = {
             {
                 test: /front\/questions\//,
                 loader: 'expose',
-                query: 'currentQuestion',
+                query: 'questions',
             },
             {
                 test: /\.js$/,

@@ -1,10 +1,9 @@
 import moment from 'moment';
 
 import { createErrorAction } from '../actions';
-import Question from './Question';
 
 
-export default new Question({
+export default {
     validate(dateInput) {
         const birthdate = parse(dateInput.value);
 
@@ -15,7 +14,7 @@ export default new Question({
     format(date) {
         return parse(date).format('YYYY-MM-DD');
     }
-});
+}
 
 function parse(date) {
     return moment(date, [

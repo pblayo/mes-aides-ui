@@ -20,10 +20,11 @@
         <script src="/js/lib.js"></script>
 
         {{#if isQuestion }}
-            <script src="/js/{{ templateName }}.js"></script>
+            <script src="/js/questions.js"></script>
 
             <script type="text/javascript">
-                currentQuestion.default.bindTo(document.querySelector('input').name);
+                questions.route({{ templateName }})
+                         .bindTo(document.querySelector('input').name);
             </script>
 
             <section id="recap">

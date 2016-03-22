@@ -1,7 +1,4 @@
-import Question from './Question';
-
-
-export default new Question({
+export default {
     format(ressortissant_eee) {
         return ressortissant_eee == 'true';
     },
@@ -10,4 +7,4 @@ export default new Question({
         if (! state.openfiscaSituation.individus[0].ressortissant_eee)
             return 'titre-sejour';
     },
-});
+};

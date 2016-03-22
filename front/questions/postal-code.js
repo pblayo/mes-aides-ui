@@ -1,6 +1,5 @@
 import '../cross-browser/fetch';
 
-import Question from './Question';
 import store from '../store';
 import {
     createAsyncStartAction,
@@ -10,12 +9,12 @@ import {
 } from '../actions';
 
 
-export default new Question({
+export default {
     route(state) {
         if (state.suggestions && state.suggestions.length)
             return 'ville';
     }
-});
+};
 
 if (typeof window != 'undefined') {  // allow testing on the backend
     document.querySelector('input[name="postalCode"]')
