@@ -37,6 +37,7 @@
     "array.from": "^1.0.0",
     "babel-cli": "^6.5.1",
     "babel-core": "^6.5.1",
+    "babel-loader": "^6.2.1",
     "babel-plugin-check-es2015-constants": "^6.7.2",
     "babel-plugin-transform-es2015-arrow-functions": "^6.5.2",
     "babel-plugin-transform-es2015-block-scoping": "^6.7.1",
@@ -50,12 +51,15 @@
     "babel-plugin-transform-es2015-template-literals": "^6.6.5",
     "babel-plugin-transform-object-assign": "^6.5.0",
     "babel-register": "^6.5.1",
+    "es6-promise": "^3.1.2",
+    "expose-loader": "^0.7.1",
     "git-rev": "^0.2.1",
     "handlebars": "^3.0.3",
     "hapi": "^9.0.3",
     "inert": "^3.0.1",
     "isomorphic-fetch": "^2.2.1",
     "js-yaml": "^3.4.0",
+    "json-loader": "^0.5.4",
     "moment": "^2.10.6",
     "object-path-immutable": "^0.3.0",
     "redux": "^3.3.1",
@@ -74,20 +78,17 @@
     "semantic-ui-reset": "^2.0.8",
     "semantic-ui-segment": "^2.0.8",
     "semantic-ui-site": "^2.0.8",
-    "vision": "^4.0.1"
+    "vision": "^4.0.1",
+    "webpack": "^1.12.10"
   },
   "devDependencies": {
-    "es6-promise": "^3.1.2",
     "eslint": "^1.10.3",
     "expect.js": "^0.3.1",
-    "expose-loader": "^0.7.1",
     "fetch-mock": "^4.1.1",
-    "json-loader": "^0.5.4",
     "mocha": "^2.3.2",
     "pm2": "^1.0.0",
     "selenium-server": "^2.47.1",
-    "watai": "^0.7.0",
-    "webpack": "^1.12.10"
+    "watai": "^0.7.0"
   },
   "babel": {
     "plugins": [
