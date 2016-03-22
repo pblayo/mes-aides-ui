@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
-        'questions': './front/questions.js',
+        'question': './front/Question.js',
         'lib': './front/lib/index.js',
     },
     output: {
@@ -13,9 +13,9 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /questions\.js$/,
+                test: /Question\.js$/,
                 loader: 'expose',
-                query: 'questions',
+                query: 'Question',
             },
             {
                 test: /\.js$/,

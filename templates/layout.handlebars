@@ -20,11 +20,11 @@
         <script src="/js/lib.js"></script>
 
         {{#if isQuestion }}
-            <script src="/js/questions.js"></script>
+            <script src="/js/question.js"></script>
 
             <script type="text/javascript">
-                questions.route('{{ templateName }}')
-                         .bindTo(document.querySelector('input').name);
+                Question.forId('{{ templateName }}')
+                        .bindTo(document.querySelector('input').name);
             </script>
 
             <section id="recap">

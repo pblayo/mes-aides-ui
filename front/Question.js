@@ -1,13 +1,13 @@
 import objectPath from 'object-path-immutable';
 
-import store from '../store';
+import store from './store';
 import {
     createErrorAction,
     createOpenfiscaSituationUpdateAction,
-} from '../actions';
+} from './actions';
 
 if (typeof window != 'undefined')  // isomorphism
-    require('../forms');
+    require('./forms');
 
 
 /** @class
@@ -72,8 +72,19 @@ export default class Question {
     }
 }
 
-
 function getInput(name) {
     return document.querySelector(`input[name="${name}"]:checked`)  // support radio groups, including for browsers that don't support RadioNodeList (IE)
            || document.querySelector(`input[name="${name}"]`);
+}
+
+export function forId(id) {
+    let options = {};
+
+    try {
+        options = require(`./questions/${id}`);
+    } catch (notFound) {
+        // do nothing, there simply was no options for this question, it is a basic one
+    }
+
+    return new Question(options);
 }
