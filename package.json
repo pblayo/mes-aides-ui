@@ -78,6 +78,7 @@
     "semantic-ui-reset": "^2.0.8",
     "semantic-ui-segment": "^2.0.8",
     "semantic-ui-site": "^2.0.8",
+    "sgmap.ludwig": "^0.2.0",
     "vision": "^4.0.1",
     "webpack": "^1.12.10",
     "yamljs": "^0.2.6"

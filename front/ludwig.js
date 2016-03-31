@@ -1,6 +1,6 @@
 import YAML from 'yamljs';
 
-import './lib/ludwig';
+import '../node_modules/sgmap.ludwig/dist/bundle.js';
 import store from './store';
 
 
