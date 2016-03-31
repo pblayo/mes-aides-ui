@@ -9,7 +9,7 @@ module.exports = {
         'postal-code': './front/questions/postal-code.js',
         'stay-permit': './front/questions/stay-permit.js',
         'lib': './front/lib/index.js',
-        'ludwig': './front/lib/ludwig.js',
+        'ludwig': './front/ludwig.js',
     },
     output: {
         path: './dist/js',
@@ -33,4 +33,7 @@ module.exports = {
             },
         ],
     },
+    node: {
+        fs: 'empty',
+    }
 }

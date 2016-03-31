@@ -2,14 +2,3 @@
 <a id="showTests">Voir les tests existants</a>
 
 <script src="/js/ludwig.js"></script>
-<script>
-    (function(Ludwig) {
-        var ludwig = new Ludwig();
-
-        document.getElementById('createTest').addEventListener('click', function() {
-            window.open(ludwig.generateSuggestionURL(store.default.getState()));
-        });
-
-        document.getElementById('showTests').href = ludwig.acceptedTestsURL();
-    })(window.Ludwig);
-</script>
