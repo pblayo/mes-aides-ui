@@ -14,7 +14,7 @@ export default new Question({
 
     format(date) {
         return parse(date).format('YYYY-MM-DD');
-    }
+    },
 });
 
 function parse(date) {

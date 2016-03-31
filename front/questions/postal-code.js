@@ -14,7 +14,7 @@ export default new Question({
     route(state) {
         if (state.suggestions && state.suggestions.length)
             return 'ville';
-    }
+    },
 });
 
 if (typeof window != 'undefined') {  // allow testing on the backend
