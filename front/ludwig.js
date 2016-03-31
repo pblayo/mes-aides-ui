@@ -18,14 +18,14 @@ NE MODIFIEZ PAS LE CONTENU CI-DESSOUS
     web:{
         acceptedTestsPath:'/tree/prod/openfisca_france/tests/mes-aides.gouv.fr',
         addPath:'/new/prod/openfisca_france/tests/mes-aides.gouv.fr',
-        suggestedTestsPath:'/pulls?utf8=✓&q=is%3Apr+is%3Aopen'
+        suggestedTestsPath:'/pulls?utf8=✓&q=is%3Apr+is%3Aopen',
     },
     github:{
         apiEndpoints:{
             createRef:'https://api.github.com/repos/sgmap/openfisca-france/git/refs',
             createContent:'https://api.github.com/repos/sgmap/openfisca-france/contents/',
-            createPullRequest:'https://api.github.com/repos/sgmap/openfisca-france/pulls'
-        }
+            createPullRequest:'https://api.github.com/repos/sgmap/openfisca-france/pulls',
+        },
     },
 });
 
