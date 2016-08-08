@@ -19,6 +19,9 @@ angular.module('ddsCommon').directive('euros', function() {
             if (element[0].tagName != 'INPUT') {
                 element.text(formatter.properties.numeralFormatter.format(String(controller.$modelValue)));  // private API, always check it's still proper when updating Cleave)
             }
+
+            // formatter.setRawValue(controller.$modelValue || 0);
+            // element.attr('inputmode', 'numeric');
         }
     };
 });
