@@ -13,6 +13,8 @@ angular.module('ddsApp').directive('euros', function() {
             });
 
             controller.$parsers.push(formatter.getRawValue.bind(formatter));
+
+            element.on('$destroy', formatter.destroy.bind(formatter));  // don't leak event listeners
         }
     };
 });
