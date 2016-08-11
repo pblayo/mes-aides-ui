@@ -29,12 +29,10 @@
             </label>
             <div class="col-sm-3">
               <div class="input-group">
-                <input
-                  type="number"
+                <input euros
+                  inputmode="numeric"
                   id="vl-terrain-non-loue"
                   class="form-control text-right"
-                  select-on-focus
-                  zero-to-empty
                   ng-model="patrimoine.valeurLocativeTerrainNonLoue">
                 <span class="input-group-addon">€</span>
               </div>
@@ -54,12 +52,10 @@
             </label>
             <div class="col-sm-3">
               <div class="input-group">
-                <input
-                  type="number"
+                <input euros
+                  inputmode="numeric"
                   id="vl-immo-non-loue"
                   class="form-control text-right"
-                  select-on-focus
-                  zero-to-empty
                   ng-model="patrimoine.valeurLocativeImmoNonLoue">
                 <span class="input-group-addon">€</span>
               </div>
@@ -83,11 +79,9 @@
               <tr>
                 <td ng-repeat="month in revenusLocatifs.months">
                   <span class="input-group">
-                    <input
-                      type="number"
+                    <input euros
+                      inputmode="numeric"
                       class="form-control text-right"
-                      select-on-focus
-                      zero-to-empty
                       ng-model="month.montant"
                       ng-change="updateRevenusLocatifsYearAmount()">
                     <span class="input-group-addon hidden-xs">€</span>
@@ -95,11 +89,9 @@
                 </td>
                 <td>
                   <span class="input-group">
-                    <input
-                      type="number"
+                    <input euros
+                      inputmode="numeric"
                       class="form-control text-right"
-                      select-on-focus
-                      zero-to-empty
                       ng-model="revenusLocatifs.year">
                     <span class="input-group-addon hidden-xs">€</span>
                   </span>
@@ -123,13 +115,11 @@
           <label class="col-sm-4 control-label" for="epargne-sur-livret">Montant total de votre épargne sur livrets</label>
           <div class="col-sm-3">
             <div class="input-group">
-              <input
-                type="number"
+              <input euros
+                inputmode="numeric"
                 required
                 id="epargne-sur-livret"
                 class="form-control text-right"
-                select-on-focus
-                zero-to-empty
                 ng-model="patrimoine.epargneSurLivret">
               <span class="input-group-addon">€</span>
             </div>
@@ -154,12 +144,10 @@
             </label>
             <div class="col-sm-3">
               <div class="input-group">
-                <input
-                  type="number"
+                <input euros
+                  inputmode="numeric"
                   id="epargne-sans-revenus"
                   class="form-control text-right"
-                  select-on-focus
-                  zero-to-empty
                   ng-model="patrimoine.epargneSansRevenus">
                 <span class="input-group-addon">€</span>
               </div>
@@ -184,8 +172,6 @@
                     <input euros
                       inputmode="numeric"
                       class="form-control text-right"
-                      select-on-focus
-                      zero-to-empty
                       ng-model="month.montant"
                       ng-change="updateRevenusDuCapitalYearAmount()">
                     <span class="input-group-addon hidden-xs">€</span>
@@ -196,8 +182,6 @@
                     <input euros
                       inputmode="numeric"
                       class="form-control text-right"
-                      select-on-focus
-                      zero-to-empty
                       ng-model="revenusDuCapital.year">
                     <span class="input-group-addon hidden-xs">€</span>
                   </span>

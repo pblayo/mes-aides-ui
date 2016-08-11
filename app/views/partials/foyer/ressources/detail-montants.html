@@ -32,15 +32,13 @@
           <div class="form-group">
             <label for="ca-individu-{{ individuIndex }}">Chiffre d’affaires {{ yearMoinsUn }}</label>
             <span class="input-group">
-              <input
-                type="number"
+              <input euros
+                inputmode="numeric"
                 id="ca-individu-{{ individuIndex }}"
                 class="form-control text-right"
                 required
                 min="0"
                 step="1000"
-                select-on-focus
-                zero-to-empty
                 ng-model="ressource.montantAnnuel">
               <span class="input-group-addon">€</span>
             </span>
@@ -56,15 +54,13 @@
             Chiffre d'affaires {{ month.label | uppercaseFirst }}
           </label>
           <span class="input-group">
-            <input
-              type="number"
+            <input euros
+              inputmode="numeric"
               class="form-control text-right"
               id="{{ index + ressource.type.id + month.id }}"
               required
               min="0"
               step="100"
-              select-on-focus
-              zero-to-empty
               ng-model="ressource.montantsMensuels[$index]">
             <span class="input-group-addon">€</span>
           </span>
@@ -107,15 +103,13 @@
           <div class="form-group">
             <label for="ca-individu-{{ individuIndex }}">Chiffre d’affaires {{ yearMoinsUn }}</label>
             <span class="input-group">
-              <input
-                type="number"
+              <input euros
+                inputmode="numeric"
                 id="ca-individu-{{ individuIndex }}"
                 class="form-control text-right"
                 required
                 min="0"
                 step="1000"
-                select-on-focus
-                zero-to-empty
                 ng-model="ressource.montantAnnuel">
               <span class="input-group-addon">€</span>
             </span>
@@ -150,15 +144,13 @@
           <div class="form-group">
             <label for="ca-individu-{{ individuIndex }}"><abbr title="Chiffre d'affaires">CA</abbr> sur le dernier exercice clos</label>
             <span class="input-group">
-              <input
-                type="number"
+              <input euros
+                inputmode="numeric"
                 id="ca-individu-{{ individuIndex }}"
                 class="form-control text-right"
                 required
                 min="0"
                 step="1000"
-                select-on-focus
-                zero-to-empty
                 ng-model="ressource.caAnnuel">
               <span class="input-group-addon">€</span>
             </span>
@@ -175,15 +167,13 @@
               Bénéfice sur le dernier exercice clos
             </label>
             <span class="input-group">
-              <input
-                type="number"
+              <input euros
+                inputmode="numeric"
                 id="revenus-exercice-individu-{{ individuIndex }}"
                 class="form-control text-right"
                 required
                 min="0"
                 step="1000"
-                select-on-focus
-                zero-to-empty
                 ng-model="ressource.montantAnnuel">
               <span class="input-group-addon">€</span>
             </span>
@@ -220,15 +210,13 @@
               Dernier bénéfice agricole
             </label>
             <span class="input-group">
-              <input
-                type="number"
+              <input euros
+                inputmode="numeric"
                 id="revenus-exercice-individu-{{ individuIndex }}"
                 class="form-control text-right"
                 required
                 min="0"
                 step="1000"
-                select-on-focus
-                zero-to-empty
                 ng-model="ressource.montantAnnuel">
               <span class="input-group-addon">€</span>
             </span>
