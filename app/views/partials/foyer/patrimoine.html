@@ -30,7 +30,6 @@
             <div class="col-sm-3">
               <div class="input-group">
                 <input euros
-                  inputmode="numeric"
                   id="vl-terrain-non-loue"
                   class="form-control text-right"
                   ng-model="patrimoine.valeurLocativeTerrainNonLoue">
@@ -53,7 +52,6 @@
             <div class="col-sm-3">
               <div class="input-group">
                 <input euros
-                  inputmode="numeric"
                   id="vl-immo-non-loue"
                   class="form-control text-right"
                   ng-model="patrimoine.valeurLocativeImmoNonLoue">
@@ -80,7 +78,6 @@
                 <td ng-repeat="month in revenusLocatifs.months">
                   <span class="input-group">
                     <input euros
-                      inputmode="numeric"
                       class="form-control text-right"
                       ng-model="month.montant"
                       ng-change="updateRevenusLocatifsYearAmount()">
@@ -90,7 +87,6 @@
                 <td>
                   <span class="input-group">
                     <input euros
-                      inputmode="numeric"
                       class="form-control text-right"
                       ng-model="revenusLocatifs.year">
                     <span class="input-group-addon hidden-xs">€</span>
@@ -116,7 +112,6 @@
           <div class="col-sm-3">
             <div class="input-group">
               <input euros
-                inputmode="numeric"
                 required
                 id="epargne-sur-livret"
                 class="form-control text-right"
@@ -145,7 +140,6 @@
             <div class="col-sm-3">
               <div class="input-group">
                 <input euros
-                  inputmode="numeric"
                   id="epargne-sans-revenus"
                   class="form-control text-right"
                   ng-model="patrimoine.epargneSansRevenus">
@@ -170,7 +164,6 @@
                 <td ng-repeat="month in revenusDuCapital.months">
                   <span class="input-group">
                     <input euros
-                      inputmode="numeric"
                       class="form-control text-right"
                       ng-model="month.montant"
                       ng-change="updateRevenusDuCapitalYearAmount()">
@@ -180,7 +173,6 @@
                 <td>
                   <span class="input-group">
                     <input euros
-                      inputmode="numeric"
                       class="form-control text-right"
                       ng-model="revenusDuCapital.year">
                     <span class="input-group-addon hidden-xs">€</span>

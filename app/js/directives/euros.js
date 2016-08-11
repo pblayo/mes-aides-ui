@@ -22,6 +22,8 @@ angular.module('ddsCommon').directive('euros', function() {
 
             var input = element;
 
+            input.attr('inputmode', 'numeric');
+
             input.on('click', function() {
                 this.select();
             });
@@ -41,7 +43,6 @@ angular.module('ddsCommon').directive('euros', function() {
             });
 
             // formatter.setRawValue(controller.$modelValue || 0);
-            // element.attr('inputmode', 'numeric');
         }
     };
 });
