@@ -12,15 +12,13 @@
           {{ month.label|uppercaseFirst }}
         </label>
         <span class="input-group">
-          <input
-            type="number"
+          <input euros
+            inputmode="numeric"
             class="form-control text-right"
             id="{{ ressource.type.id }}-month_{{ $index + 1 }}"
             required
             min="0"
             step="100"
-            select-on-focus
-            zero-to-empty
             ng-model="ressource.montantsMensuels[$index]">
           <span class="input-group-addon">€</span>
         </span>
@@ -33,8 +31,8 @@
           Total depuis {{ debutAnneeGlissante }}
         </label>
         <span class="input-group">
-          <input
-            type="number"
+          <input euros
+            inputmode="numeric"
             class="form-control text-right"
             id="{{ ressource.type.id }}-year"
             required

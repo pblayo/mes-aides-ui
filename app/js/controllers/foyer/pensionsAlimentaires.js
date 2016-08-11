@@ -8,24 +8,19 @@ angular.module('ddsApp').controller('FoyerPensionsAlimentairesCtrl', function($s
     var months = SituationService.getMonths($scope.situation.dateDeValeur);
 
     var initMontantsMensuels = function(individu, pensionType) {
-        var result = _.map(months, function(month) {
-            var ressource = _.find(individu.ressources, { periode: month.id, type: pensionType });
-            return ressource ? RessourceService.roundToCents(ressource.montant) : 0;
+        return _.map(months, function(month) {
+            return _.find(individu.ressources, { periode: month.id, type: pensionType }) || 0;
         });
-
-        return result;
     };
 
     var initMontantAnnuel = function(individu, pensionType) {
-        var result = _.chain(individu.ressources)
+        return _.chain(individu.ressources)
             .where({ type: pensionType })
             .pluck('montant')
             .reduce(function(sum, num) {
                 return sum + num;
             })
-            .value();
-
-        return RessourceService.roundToCents(result) || 0;
+            .value() || 0;
     };
 
     $scope.pensionsVersees = _.find(ressourceTypes, { id: 'pensionsAlimentairesVersees' });
