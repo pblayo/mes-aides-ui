@@ -6,10 +6,12 @@
         <uib-accordion-group is-open="droit.open">
           <uib-accordion-heading>
             <div class="row">
-              <div class="col-xs-10">{{ droit.label }}</div>
-              <div class="col-xs-2">
-                <i class="fa" ng-class="{'fa-chevron-down': droit.open, 'fa-chevron-right': !droit.open}" aria-hidden="true" role="presentation"></i>
-              </div>
+            <i class="fa col-xs-2"
+              ng-class="{'fa-chevron-down': droit.open, 'fa-chevron-right': !droit.open}"
+              aria-hidden="true"
+              role="presentation"
+              ></i>
+            {{ droit.label }}
             </div>
           </uib-accordion-heading>
           <p>{{ droit.description }}</p>
