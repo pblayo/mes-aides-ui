@@ -8,7 +8,7 @@
   <h4 class="section-header">Votre logement</h4>
   <div class="situation-block">
     <div ng-bind-html="recapLogement|uppercaseFirst"></div>
-    <div ng-if="situation.logement.loyer">{{ loyerLabel }}&nbsp;: <b>{{ situation.logement.loyer }} €</b></div>
+    <div ng-if="situation.logement.loyer">{{ loyerLabel }}&nbsp;: <b euros value="{{ situation.logement.loyer }}"></b></div>
     Code postal <b>{{ situation.logement.adresse.codePostal }}</b>
     <br><b>{{ situation.logement.adresse.nomCommune }}</b>
   </div>
@@ -36,8 +36,7 @@
           <div class="col-sm-7">
             {{ month.label | uppercaseFirst }}
           </div>
-          <div class="col-sm-5">
-            {{ ressource[month.id] }} €
+          <div class="col-sm-5" euros value="{{ ressource[month] }}">
           </div>
         </div>
         <hr>
@@ -45,8 +44,7 @@
           <div class="col-sm-7">
             Annuel
           </div>
-          <div class="col-sm-5">
-            {{ getTotalAnnuel(ressource) }} €
+          <div class="col-sm-5" euros value="{{ getTotalAnnuel(ressource) }}">
           </div>
         </div>
       </uib-accordion-group>
@@ -75,8 +73,7 @@
         <div class="col-sm-8">
           {{ ressource.label }}
         </div>
-        <div class="col-sm-4">
-          {{ ressource.montant }} €
+        <div class="col-sm-4" euros value="{{ ressource.montant }}">
         </div>
       </div>
     </uib-accordion-group>
@@ -95,7 +92,7 @@
       heading="Patrimoine"
       is-open="revenu.isOpen">
       <div ng-repeat="value in patrimoine">
-        {{ value.label }}&nbsp;: {{ value.montant }} €
+        {{ value.label }}&nbsp;: <span euros value="{{ value.montant }}"></span>
       </div>
     </uib-accordion-group>
     <uib-accordion-group
@@ -103,7 +100,7 @@
       heading="{{ revenu.label }}"
       is-open="revenu.isOpen">
       <div ng-repeat="value in revenu.values">
-        {{ value.periode|uppercaseFirst }}&nbsp;: {{ value.montant }} €
+        {{ value.periode|uppercaseFirst }}&nbsp;: <span euros value="{{ value.montant }}"></span>
       </div>
     </uib-accordion-group>
   </uib-accordion>

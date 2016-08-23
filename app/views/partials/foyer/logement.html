@@ -72,17 +72,11 @@
             {{ loyerLabel() }}
           </label>
           <div class="col-sm-6">
-            <div class="input-group">
-              <input euros
-                min="0"
-                step="100"
-                class="form-control text-right"
-                id="loyer"
-                name="loyer"
-                ng-model="logement.loyer"
-                >
-              <div class="input-group-addon">€</div>
-            </div>
+            <input euros
+              id="loyer"
+              name="loyer"
+              ng-model="logement.loyer"
+              >
             <span class="help-block" ng-if="submitted && form.loyer.$invalid">Champ invalide</span>
           </div>
         </div>
@@ -100,15 +94,11 @@
             Vos charges
           </label>
           <div class="col-sm-6">
-            <div class="input-group">
-              <input euros
-                class="form-control text-right"
-                id="charges"
-                name="charges"
-                ng-model="logement.charges"
-                >
-              <div class="input-group-addon">€</div>
-            </div>
+            <input euros
+              id="charges"
+              name="charges"
+              ng-model="logement.charges"
+              >
             <span class="help-block" ng-if="submitted && form.charges.$invalid">Champ invalide</span>
           </div>
         </div>

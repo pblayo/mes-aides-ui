@@ -3,7 +3,14 @@
 angular.module('ddsCommon').directive('euros', function() {
     return {
         restrict: 'A',
-        require: 'ngModel',
+        require: '?ngModel',
+        replace: true,
+        scope: {
+            value: '@value',
+        },
+        templateUrl: function(element, attributes) {
+            return '/components/euros/' + (element[0].tagName == 'INPUT' ? 'input' : 'text') + '.html';
+        },
         link: function(scope, element, attributes, controller) {
             var formatter = new Cleave(element, {
                 numeral: true,
@@ -12,17 +19,28 @@ angular.module('ddsCommon').directive('euros', function() {
                 delimiter: ' '
             });
 
-            controller.$parsers.push(formatter.getRawValue.bind(formatter));
-
             element.on('$destroy', formatter.destroy.bind(formatter));  // don't leak event listeners
 
-            if (element[0].tagName != 'INPUT') {
-                return element.text(formatter.properties.numeralFormatter.format(String(controller.$modelValue)));  // private API, always check it's still proper when updating Cleave)
+            function format(value) {
+                return formatter.properties.numeralFormatter.format(String(value).replace('.', ',') || '0');  // private API, always check it's still proper when updating Cleave
             }
+
+
+            if (! controller) {  // we're not an input, but a simple formatter
+                scope.formattedAmount = format(scope.value);
+                return;
+            }
+
 
             var input = element;
 
-            input.attr('inputmode', 'numeric');
+            controller.$formatters.push(function() {
+                format(controller.$modelValue);
+            });
+
+            controller.$parsers.push(function() {
+                return formatter.getRawValue();
+            });
 
             input.on('click', function() {
                 this.select();

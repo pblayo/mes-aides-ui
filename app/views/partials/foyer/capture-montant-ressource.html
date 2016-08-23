@@ -11,16 +11,11 @@
         <label for="{{ ressource.type.id }}-month_{{ $index + 1 }}">
           {{ month.label|uppercaseFirst }}
         </label>
-        <span class="input-group">
-          <input euros
-            class="form-control text-right"
-            id="{{ ressource.type.id }}-month_{{ $index + 1 }}"
-            required
-            min="0"
-            step="100"
-            ng-model="ressource.montantsMensuels[$index]">
-          <span class="input-group-addon">€</span>
-        </span>
+        <input euros
+          id="{{ ressource.type.id }}-month_{{ $index + 1 }}"
+          ng-model="ressource.montantsMensuels[$index].montant"
+          required
+          >
         <span class="text-danger" ng-if="form.submitted && ! isNumber(ressource.montantsMensuels[$index])">
           Montant invalide
         </span>
@@ -29,16 +24,12 @@
         <label for="{{ ressource.type.id }}-year">
           Total depuis {{ debutAnneeGlissante }}
         </label>
-        <span class="input-group">
-          <input euros
-            class="form-control text-right"
-            id="{{ ressource.type.id }}-year"
-            required
-            min="{{ monthsSum }}"
-            step="100"
-            ng-model="ressource.montantAnnuel">
-          <span class="input-group-addon">€</span>
-        </span>
+        <input euros
+          id="{{ ressource.type.id }}-year"
+          required
+          min="{{ monthsSum }}"
+          step="100"
+          ng-model="ressource.montantAnnuel">
         <span class="text-danger" ng-if="form.submitted && ! isNumber(ressource.montantAnnuel)">
           Montant invalide
         </span>
