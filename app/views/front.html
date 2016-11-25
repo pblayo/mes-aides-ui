@@ -68,6 +68,10 @@
       <nav class="container">
         <a ui-sref="home" class="navbar-brand" title="Accueil">mes-aides.gouv.fr</a>
 
+        <a ng-if="newBroadcasts.length" id="broadcast" href="https://github.com/sgmap/mes-aides-ui/releases">
+          <i class="fa fa-bell" aria-hidden="true"></i> {{ newBroadcasts[0].name }}
+        </a>
+
         <loading-spinner class="navbar-right"></loading-spinner>
       </nav>
 
@@ -158,6 +162,7 @@
     <script src="js/controllers/foyer/patrimoine.js"></script>
     <script src="js/controllers/resultat.js"></script>
 
+    <script src="js/services/broadcastService.js"></script>
     <script src="js/services/situationService.js"></script>
     <script src="js/services/resultatService.js"></script>
     <script src="js/services/individuService.js"></script>

@@ -58,6 +58,11 @@ header[role="banner"] .loading-spinner .loading-spinner-icon {
 	margin-top: 0px;
 }
 
+#broadcast {
+	float: right;
+	font-size: 120%;
+}
+
 #beta-ribbon {
 	text-align: center;
 	text-transform: uppercase;
