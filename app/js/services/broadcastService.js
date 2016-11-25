@@ -2,11 +2,11 @@
 
 angular.module('ddsCommon').service('BroadcastService', function($http, $localStorage, $log) {
     function getLastBroadcastRead() {
-        if (! $localStorage.lastBroadcastRead) {
-            if ($localStorage.showIntro === false)
-                $localStorage.lastBroadcastRead = "2016-11-14T00:00:00.000Z";  // display broadcast introduction to visitors coming back
-            else
-                updateLastBroadcastRead();
+        if (! $localStorage.lastBroadcastRead) {  // first visit since introduction of the broadcast feature
+            updateLastBroadcastRead();  // consider past broadcasts as read
+
+            if ($localStorage.showIntro === false)  // display introductory broadcast to returning visitors
+                $localStorage.lastBroadcastRead = new Date(0).toISOString();
         }
 
         return $localStorage.lastBroadcastRead;
