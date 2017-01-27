@@ -58,6 +58,12 @@ angular.module('ddsCommon').factory('SituationService', function($http, $session
             ImpactStudyService.resetSessionId();
         },
 
+        hasLocalSituation: function() {
+            return $sessionStorage.situation &&
+                $sessionStorage.situation.individus &&
+                $sessionStorage.situation.individus.length > 0;
+        },
+
         restoreLocal: function() {
             if (! situation) {
                 situation = $sessionStorage.situation;
