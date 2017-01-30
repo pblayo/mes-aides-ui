@@ -7,7 +7,7 @@
         Vous souhaitez savoir si vous pouvez bénéficier du RSA, d'une Couverture Maladie Universelle Complémentaire, d'une Allocation Logement, ou de toute autre Prestation Familiale ou Sociale&nbsp;?
       </p>
 
-      <div class="row" ng-if="!hasLocalSituation()">
+      <div class="row" ng-if="! hasLocalSituation()">
         <div class="col-sm-6">
           <div class="text-right">
             <a class="btn btn-primary btn-lg" ui-sref="foyer.demandeur" ng-click="newSituation()">Commencer la simulation…</a>
@@ -28,9 +28,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-
-          <a class="btn btn-primary btn-lg" ui-sref="foyer.demandeur" ng-click="newSituation()">  Commencer une nouvelle simulation</a>
-          </div>
+          <a class="btn btn-primary btn-lg" ui-sref="foyer.demandeur" ng-click="newSituation()">Commencer une nouvelle simulation</a>
         </div>
       </div>
     </div>
@@ -46,7 +44,7 @@
         Vous souhaitez savoir si vous pouvez bénéficier du RSA, d'une Couverture Maladie Universelle Complémentaire, d'une Allocation Logement, ou de toute autre Prestation Familiale ou Sociale&nbsp;?
       </p>
 
-      <div class="text-center" ng-if="!hasLocalSituation()">
+      <div class="text-center" ng-if="! hasLocalSituation()">
         <a class="btn btn-primary btn-lg" ui-sref="foyer.demandeur" ng-click="newSituation()">Commencer la simulation</a>
       </div>
 
