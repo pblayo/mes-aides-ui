@@ -9,7 +9,8 @@ angular.module('ddsApp').controller('FoyerRessourcesIndividuCtrl', function($sco
             .map('type')
             .uniq()
             .filter(RessourceService.isRessourceOnMainScreen)
-            .forEach(function(ressourceType) { result[ressourceType] = true; });
+            .forEach(function(ressourceType) { result[ressourceType] = true; })
+            .value();
 
         ['caMicroEntreprise', 'caAutoEntrepreneur', 'revenusAgricolesTns', 'autresRevenusTns'].forEach(function(ressourceType) {
             if (individu[ressourceType]) {
