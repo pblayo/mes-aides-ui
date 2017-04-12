@@ -1,5 +1,6 @@
 'use strict';
 
+
 angular.module('ddsApp').controller('FoyerLogementCtrl', function($scope, $http, $log, logementTypes, locationTypes, loyerLabels, SituationService, IndividuService) {
 
     $scope.updateCities = function updateCities() {
@@ -87,7 +88,7 @@ angular.module('ddsApp').controller('FoyerLogementCtrl', function($scope, $http,
         if (logement.type == 'heberge') {
             return false;
         }
-        return _.any([
+        return _.some([
             angular.isDefined(logement.primoAccedant),
             logement.locationType == 'foyer',
             angular.isDefined(logement.isChambre)
@@ -95,7 +96,7 @@ angular.module('ddsApp').controller('FoyerLogementCtrl', function($scope, $http,
     };
 
     $scope.captureCodePostal = function() {
-        return _.any([
+        return _.some([
             angular.isDefined(logement.primoAccedant),
             logement.locationType == 'foyer',
             angular.isDefined(logement.isChambre),

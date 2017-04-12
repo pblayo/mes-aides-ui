@@ -6,8 +6,8 @@ angular.module('ddsApp').controller('FoyerRessourcesIndividuCtrl', function($sco
         var result = {};
         var ressources = individu.ressources || [];
         _.chain(ressources)
-            .pluck('type')
-            .unique()
+            .map('type')
+            .uniq()
             .filter(RessourceService.isRessourceOnMainScreen)
             .forEach(function(ressourceType) { result[ressourceType] = true; });
 
@@ -24,8 +24,8 @@ angular.module('ddsApp').controller('FoyerRessourcesIndividuCtrl', function($sco
         var result = [];
         var ressources = individu.ressources || [];
         var types = _.chain(ressources)
-            .pluck('type')
-            .unique()
+            .map('type')
+            .uniq()
             .filter(RessourceService.isRessourceOnMainScreen)
             .value();
 
@@ -37,8 +37,8 @@ angular.module('ddsApp').controller('FoyerRessourcesIndividuCtrl', function($sco
             });
 
             var montantAnnuel = _.chain(ressources)
-                .where({ type: type })
-                .pluck('montant')
+                .filter({ type: type })
+                .map('montant')
                 .reduce(function(sum, montant) {
                     return sum + montant;
                 })
@@ -52,7 +52,7 @@ angular.module('ddsApp').controller('FoyerRessourcesIndividuCtrl', function($sco
                 onGoing: true
             };
 
-            if (_.contains(individu.interruptedRessources, type)) {
+            if (_.includes(individu.interruptedRessources, type)) {
                 ressource.onGoing = false;
             }
             result.push(ressource);
