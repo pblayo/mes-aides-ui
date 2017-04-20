@@ -15,7 +15,7 @@
     "mongoose": "^4.5.1",
     "morgan": "~1.8.0",
     "serve-favicon": "^2.4.0",
-    "sgmap-mes-aides-api": "sgmap/mes-aides-api#v7.3.3"
+    "sgmap-mes-aides-api": "sgmap/mes-aides-api#a1c3ea42086929c06750f9727a8fef9f50d8a16d"
   },
   "repository": {
     "type": "git",
