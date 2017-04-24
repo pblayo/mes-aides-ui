@@ -35,6 +35,9 @@ angular.module('ddsApp').controller('ResultatCtrl', function($scope, $rootScope,
         $scope.awaitingResults = false;
     });
 
+    $scope.issueTitle = 'Titre - timestamp: ' + Date.now();
+    $scope.issueDescription = 'Super description !';
+
     $scope.yearMoins2 = moment($scope.situation.dateDeValeur).subtract('years', 2).format('YYYY');
     $scope.debutPeriode = moment($scope.situation.dateDeValeur).startOf('month').subtract('years', 1).format('MMMM YYYY');
     $scope.finPeriode = moment($scope.situation.dateDeValeur).startOf('month').subtract('months', 1).format('MMMM YYYY');
@@ -49,22 +52,43 @@ angular.module('ddsApp').controller('ResultatCtrl', function($scope, $rootScope,
         return ! droitsDescription.partenairesLocaux[partenaireId].interactionWithNationalPrestationCalculated;
     };
 
-    $scope.createTest = function() {
+    function generateExpectedResults() {
         // Merge national and local prestations into a flat object compatible with ludwig.
         var flatPrestations = _.merge.apply(
             null,
             _.values($scope.droits.partenairesLocaux).concat($scope.droits.prestationsNationales)
         );
 
-        var expectedResults = _.map(flatPrestations, function(droit, id) {
+        return _.map(flatPrestations, function(droit, id) {
             return {
                 code: id,
                 expectedValue: droit.montant
             };
         });
+    }
 
+    function generateTestFileContent() {
+        var name = $scope.issueTitle;
+        var description = $scope.issueDescription;
+        var content = {
+            name: name,
+            description: description,
+            scenario: $scope.situation || {},
+            expectedResults: generateExpectedResults()
+        };
+        return JSON.stringify(content, null, 2);
+    }
+
+    function updateTestFileContent() {
+        $scope.issueFileContent = generateTestFileContent();
+    }
+
+    $scope.$watch('issueTitle', updateTestFileContent, true);
+    $scope.$watch('issueDescription', updateTestFileContent, true);
+
+    $scope.createTest = function() {
         $http.post('api/public/acceptance-tests', {
-            expectedResults: expectedResults,
+            expectedResults: generateExpectedResults(),
             scenario: { situationId: $scope.situation._id }
         }).success(function(data) {
             $window.location.href = '/tests/' + data._id + '/edit';
