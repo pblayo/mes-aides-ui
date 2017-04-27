@@ -66,6 +66,7 @@ var droitsDescription = {
                     'conditions': [
                         'Résider <abbr title="Métropole, Guadeloupe, Guyane, Martinique ou Réunion">en France</abbr> depuis plus de 3 mois.'
                     ],
+                    'hasMontant': false,
                     'link': 'https://www.service-public.fr/particuliers/vosdroits/F10027',
                     'form': 'https://www.formulaires.modernisation.gouv.fr/gf/cerfa_12504.do',
                     'forms': {
