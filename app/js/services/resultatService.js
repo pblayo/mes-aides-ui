@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('ddsApp').service('ResultatService', function($http, droitsDescription) {
+    var cache = {};
     function processOpenfiscaResult(openfiscaResult) {
         var droitsEligibles = {};
         var prestationsNationales = extractMontants(droitsDescription.prestationsNationales, openfiscaResult.calculatedPrestations);
@@ -53,11 +54,14 @@ angular.module('ddsApp').service('ResultatService', function($http, droitsDescri
     return {
         processOpenfiscaResult: processOpenfiscaResult,
         simulate: function(situation) {
-            return $http.get('/api/situations/' + situation._id + '/simulation', {
-                params: { cacheBust: Date.now() }
-            }).then(function(response) {
-                return processOpenfiscaResult(response.data);
-            });
+            if (! cache[situation._id]) {
+                cache[situation._id] = $http.get('/api/situations/' + situation._id + '/simulation', {
+                    params: { cacheBust: Date.now() }
+                }).then(function(response) {
+                    return processOpenfiscaResult(response.data);
+                });
+            }
+            return cache[situation._id];
         }
     };
 });
