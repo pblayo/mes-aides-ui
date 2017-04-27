@@ -22,7 +22,7 @@ angular.module('ddsApp').controller('ContributionCtrl', function($scope, droitsD
             }
         }
     }
-    $scope.possibleValues = _.sortBy(prestations, 'shortLabel');
+    $scope.possibleValues = _.sortBy(prestations, 'label');
 
     function displayValueFor(droit, value) {
         if (_.isBoolean(value)) {
@@ -34,8 +34,7 @@ angular.module('ddsApp').controller('ContributionCtrl', function($scope, droitsD
         }
 
         if (_.isString(value)) {
-            var reason = droit.uncomputability && droit.uncomputability[value] && droit.uncomputability[value].admin || 'raison non définie';
-            return 'Non calculable car ' + reason;
+            return droit.uncomputability && droit.uncomputability[value] && droit.uncomputability[value].admin || 'raison non définie';
         }
 
         return value;
@@ -45,6 +44,7 @@ angular.module('ddsApp').controller('ContributionCtrl', function($scope, droitsD
     $scope.droitSelected = function(expectedResult) {
         expectedResult.result = droitsObtenus[expectedResult.ref.code.toLowerCase()];
         expectedResult.expectedValue = expectedResult.result;
+        delete expectedResult.shouldCompute;
     };
 
     $scope.submit = function() {
