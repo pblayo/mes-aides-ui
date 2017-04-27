@@ -152,10 +152,12 @@ var droitsDescription = {
                     },
                     'uncomputability': {
                         'tns': {
+                            'admin': 'le demandeur a des revenus en tant qu’indépendant',
                             'reason': 'vous avez des revenus en tant qu’indépendant·e',
                             'solution': 'Vous pouvez demander à bénéficier du RSA, mais c’est le président de votre conseil départemental qui <a target="_blank" rel="noopener" title="Article R262-23 du code de l’action sociale" href="https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000028251799&cidTexte=LEGITEXT000006074069">décidera</a> de la manière dont vos revenus non salariés impacteront le montant de votre aide.'
                         },
                         'conjoint_tns': {
+                            'admin': 'le conjoint du demandeur a des revenus en tant qu’indépendant',
                             'reason': 'votre conjoint·e a des revenus en tant qu’indépendant·e',
                             'solution': 'Vous pouvez demander à bénéficier du RSA, mais c’est le président de votre conseil départemental qui <a target="_blank" rel="noopener" title="Article R262-23 du code de l’action sociale" href="https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000028251799&cidTexte=LEGITEXT000006074069">décidera</a> de la manière dont les revenus non salariés de votre conjoint·e impacteront le montant de votre aide.'
                         }
@@ -178,10 +180,12 @@ var droitsDescription = {
                     'isBaseRessourcesYearMoins2': true,
                     'uncomputability': {
                         'primo_accedant': {
+                            'admin': 'le demandeur est primo-accédant',
                             'reason': 'vous êtes <abbr title="Non propriétaire de votre résidence principale dans les deux années précédant l’achat de votre résidence actuelle">primo-accédant</abbr> à la propriété de votre résidence principale',
                             'solution': 'Le <a target="_blank" rel="noopener" href="https://wwwd.caf.fr/wps/portal/caffr/aidesetservices/lesservicesenligne/estimervosdroits/lelogement">simulateur de la CAF</a> pourra estimer vos droits sur la base de la valeur de votre bien.'
                         },
                         'locataire_foyer': {
+                            'admin': 'le demandeur loge dans un foyer',
                             'reason': 'vous logez dans un foyer',
                             'solution': 'Le <a target="_blank" rel="noopener" href="https://wwwd.caf.fr/wps/portal/caffr/aidesetservices/lesservicesenligne/estimervosdroits/lelogement">simulateur de la CAF</a> vous donnera des estimations selon les différentes conventions possibles de votre foyer.'
                         }
@@ -206,6 +210,7 @@ var droitsDescription = {
                     'isBaseRessourcesYearMoins2': true,
                     'uncomputability': {
                         'intervention_CDAPH_necessaire': {
+                            'admin': 'le taux d’incapacité est déterminé par la CDAPH',
                             'reason': 'votre taux d’incapacité sera déterminé par la <abbr title="Commission des droits et de l’autonomie des personnes handicapées">CDAPH</abbr> après le dépôt de votre demande',
                             'solution': 'Contactez <a target="_blank" rel="noopener" href="https://informations.handicap.fr/carte-france-mdph.php">la <abbr title="Maison départementale des personnes handicapées">MDPH</abbr> la plus proche</a> pour faire établir ce taux. Attention, votre éligibilité à l’AAH peut impacter vos droits au RSA et à la CMU-C.'
                         }
