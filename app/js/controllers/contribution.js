@@ -7,7 +7,7 @@ angular.module('ddsApp').controller('ContributionCtrl', function($scope, droitsD
     ResultatService.simulate($scope.situation).then(function(result) {
         droitsObtenus = result.raw.calculatedPrestations;
     });
-    $scope.test = { expectedResults:[] };
+    $scope.test = { expectedResults: [] };
 
     $scope.submitting = false;
     $scope.submitLabel = function() {
