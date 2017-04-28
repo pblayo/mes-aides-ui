@@ -1,8 +1,6 @@
 'use strict';
 
 angular.module('ddsApp').controller('ContributionCtrl', function($scope, droitsDescription, SituationService, ResultatService) {
-    $scope.situation = SituationService.restoreLocal();
-
     /*var droitsObtenus = {};
     ResultatService.simulate($scope.situation).then(function(result) {
         droitsObtenus = result.raw.calculatedPrestations;
@@ -52,6 +50,27 @@ angular.module('ddsApp').controller('ContributionCtrl', function($scope, droitsD
 
         return value;
     }
+
+    function generateState(test) {
+        return JSON.stringify({
+            name: test.name,
+            description: test.description,
+            scenario: SituationService.restoreLocal(),
+            expectedResults: test.expectedResults.map(function(result) {
+                return  {
+                    code: result.ref.code,
+                    expectedValue: result.expectedValue
+                };
+            })
+        });
+    }
+
+    function setState() {
+        $scope.generatedState = generateState($scope.test);
+    }
+    setState();
+
+    $scope.$watch('test', setState, true);
     $scope.displayValueFor = displayValueFor;
 
     $scope.droitSelected = function(expectedResult) {
@@ -60,15 +79,5 @@ angular.module('ddsApp').controller('ContributionCtrl', function($scope, droitsD
         delete expectedResult.shouldCompute;
     };
 
-    $scope.submit = function() {
-        alert('Submit');
-        /*$scope.submitting = true;
-        var test = _.pick($scope.test, ['_id', 'situation', 'name', 'description', 'expectedResults', 'keywords']);
-        $http.put(config.baseApiPath + '/acceptance-tests/' + test._id, test).then(function() {
-            AcceptanceTestsService.launchTest(test)
-            .finally(function () {
-                    $state.go('index.show', { 'testId': test._id });
-                });
-        });//*/
-    };
+
 });
