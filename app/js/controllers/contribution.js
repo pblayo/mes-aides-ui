@@ -62,7 +62,7 @@ angular.module('ddsApp').controller('ContributionCtrl', function($scope, droitsD
                     expectedValue: result.expectedValue
                 };
             })
-        });
+        }, null, 2);
     }
 
     function setState() {
