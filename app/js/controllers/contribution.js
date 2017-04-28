@@ -22,6 +22,17 @@ angular.module('ddsApp').controller('ContributionCtrl', function($scope, droitsD
             }
         }
     }
+
+    var prefilledCode = 'aide_logement';
+    var prefilledIndex = _.findIndex(prestations, function(p) { return p.code === prefilledCode; });
+    $scope.test.expectedResults.push({
+        expectedValue: 120.12,
+        ref: prestations[prefilledIndex],
+        shouldCompute: true
+    });
+    $scope.test.name = 'Validation test';
+    $scope.test.description = 'Description du cas d\'usage\n\n[ci skip]';
+
     $scope.possibleValues = _.sortBy(prestations, 'label');
 
     function displayValueFor(droit, value) {
