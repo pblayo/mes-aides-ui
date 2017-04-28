@@ -172,17 +172,14 @@ ddsApp.config(function($locationProvider, $stateProvider, $urlRouterProvider, $u
             url: '/pensions-alimentaires'
         })
         .state('foyer.resultat', {
-            url: '/resultat?situationId',
-            views: {
-                '': {
-                    templateUrl: '/partials/resultat.html',
-                    controller: 'ResultatCtrl'
-                },
-                'contribution@foyer.resultat': {
-                    controller: 'ContributionCtrl',
-                    templateUrl: '/partials/contribution.html'
-                }
-            }
+            templateUrl: '/partials/resultat.html',
+            controller: 'ResultatCtrl',
+            url: '/resultat?situationId&contributionId'
+        })
+        .state('foyer.resultat.contribution', {
+            url: '/contribution',
+            templateUrl: '/partials/contribution.html',
+            controller: 'ContributionCtrl'
         })
         .state('foyer.ressourcesYearMoins2', {
             templateUrl: '/partials/foyer/ressources/year-moins-2.html',

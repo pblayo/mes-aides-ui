@@ -4,6 +4,7 @@ angular.module('ddsApp').controller('ResultatCtrl', function($scope, $rootScope,
 
     $scope.error = false;
     $scope.awaitingResults = true;
+    $scope.contributionId = $stateParams.contributionId;
 
     function loadSituation() {
         return SituationService.restoreRemote('56a78f0997f543fe233ee18a');
