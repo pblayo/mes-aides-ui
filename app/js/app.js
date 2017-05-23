@@ -176,6 +176,11 @@ ddsApp.config(function($locationProvider, $stateProvider, $urlRouterProvider, $u
             templateUrl: '/partials/resultat.html',
             controller: 'ResultatCtrl'
         })
+        .state('foyer.resultat.contribution', {
+            url: '/contribution',
+            templateUrl: '/partials/contribution.html',
+            controller: 'ContributionCtrl'
+        })
         .state('foyer.ressourcesYearMoins2', {
             templateUrl: '/partials/foyer/ressources/year-moins-2.html',
             controller: 'FoyerRessourceYearMoins2Ctrl',

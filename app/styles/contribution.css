@@ -1,0 +1,36 @@
+.aide-section {
+  border: solid 1px lightgrey;
+  margin: 10px 0;
+}
+
+.aide-section > div {
+  padding: 5px 15px;
+}
+
+.aide-section input[type='text'] {
+  text-align: right;
+}
+
+.aide-block {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+}
+
+.aide-header {
+  align-items: baseline;
+  border-bottom: solid 1px lightgrey;
+  display: flex;
+  justify-content: space-between;
+}
+
+.frame-resultats textarea {
+    resize: vertical;
+}
+
+.select-row {
+    @media (min-width: $screen-xs-max) {
+        display: flex;
+        align-items: center;
+    }
+}

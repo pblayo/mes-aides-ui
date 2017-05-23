@@ -15,12 +15,12 @@ angular.module('ddsApp').controller('ResultatCtrl', function($scope, $rootScope,
         }
     }
 
-    loadSituation()
-    .then(function(situation) {
+    $scope.droitPromise = loadSituation().then(function(situation) {
         $scope.situation = situation;
         return ResultatService.simulate($scope.situation);
-    })
-    .then(function(droits) {
+    });
+
+    $scope.droitPromise.then(function(droits) {
         $scope.droits = droits.droitsEligibles;
         $scope.droitsInjectes = droits.droitsInjectes;
         $scope.noDroits = _.isEmpty($scope.droits.prestationsNationales) && _.isEmpty($scope.droits.partenairesLocaux);

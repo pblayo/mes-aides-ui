@@ -1,0 +1,156 @@
+<h2>Création d'un test à partir de la simulation</h2>
+<div class="frame-resultats">
+  <div ng-if="suggestion.result">
+    <h3>Nous avons bien reçu votre test.</h3>
+    <p>Merci beaucoup pour votre aide. Les informations communiquées sont visibles à la <a href="{{ suggestion.result.html_url }}">page suivante</a>. Vous pouvez y suivre les discussions de l'équipe et l'avancée des travaux nécessaires.</p>
+  </div>
+
+  <form name="contributionForm" novalidate ng-submit="createLudwigTest(contributionForm)" ng-if="! suggestion.result">
+    <p>Vous êtes sur cette page car les valeurs obtenues à la fin de la simulation ne vous semblent pas correctes. Le formulaire suivant vous permet d'indiquer simplement les valeurs attendues afin de nous permettre d'améliorer le service proposé.</p>
+
+    <p>Vous trouverez des indications pour compléter ce formulaire à la <a href="https://github.com/sgmap/mes-aides-ui/wiki/Protocole-de-tests-sur-mes-aides#comment-cr%C3%A9er-un-test">page suivante</a>. Ces indications sont particulièrement intéressantes lorsque vous créez un test <a href="https://github.com/sgmap/mes-aides-ui/wiki/Protocole-de-tests-sur-mes-aides#tests-cr%C3%A9%C3%A9s-sur-cas-r%C3%A9els">à partir d'un cas réel</a>.</p>
+
+    <h3>La situation de test</h3>
+    <div class="form-group">
+      <label for="test-name">Nom du test</label>
+      <input type="text" class="form-control" required id="test-name" ng-model="suggestion.name">
+    </div>
+
+    <div class="form-group">
+      <label for="test-description">Description du test</label>
+      <textarea class="form-control" required id="test-description" rows="3" ng-model="suggestion.description"></textarea>
+    </div>
+
+    <div ng-if="! (suggestion.selectedAides | isEmpty)">
+      <h3>Les aides attendues</h3>
+      <div class="aide-section" ng-repeat="aide in suggestion.selectedAides">
+        <div class="aide-header">
+          <h4>{{ aide.label }}</h4>
+          <button type="button" class="btn btn-default btn-xs" ng-click="removeAide($index)" >Supprimer</button>
+        </div>
+
+        <div class="aide-block" ng-if="aidesObtenues[aide.code]">
+          <label>Valeur obtenue</label>
+          <p ng-if="aide.type !== 'bool'">{{ aidesObtenues[aide.code].montant }}&nbsp;{{ aide.unit || '€' }}</p>
+          <p ng-if="aide.type === 'bool'">{{ aidesObtenues[aide.code].montant ? 'Éligible' : 'Non-éligible' }}</p>
+        </div>
+
+        <div class="aide-block" ng-if="aide.uncomputability">
+          <label>Cette aide devrait-elle être calculable&nbsp;?</label>
+          <div>
+            <label
+              class="btn btn-sm btn-default"
+              ng-class="{active: aide.shouldCompute === 'true'}">
+              <input
+                type="radio"
+                name="{{ 'computability-' + $index }}"
+                class="sr-only"
+                ng-model="aide.shouldCompute"
+                value="true"
+                />
+              Oui
+            </label>
+            <label
+              class="btn btn-sm btn-default"
+              ng-class="{active: aide.shouldCompute === 'false'}">
+              <input
+                type="radio"
+                name="{{ 'computability-' + $index }}"
+                class="sr-only"
+                ng-model="aide.shouldCompute"
+                value="false"
+                />
+              Non
+            </label>
+          </div>
+        </div>
+
+        <div ng-if="aide.shouldCompute === 'false'">
+          <label for="{{ 'uncomputability-reason-' + $index }}">Pour quelle raison cette aide ne doit pas être calculable&nbsp;?</label>
+          <select
+            id="{{ 'uncomputability-reason-' + $index }}"
+            class="form-control"
+            ng-model="aide.uncomputabilityReason"
+            ng-options="reasonKey as reasonValue.reason for (reasonKey, reasonValue) in aide.uncomputability track by reasonValue.reason">
+          </select>
+        </div>
+
+        <div ng-if="(! aide.uncomputability) || aide.shouldCompute === 'true'">
+          <div class="form-group" ng-if="aide.type !== 'bool'">
+            <label for="{{ 'value-' + $index }}">Valeur attendue</label>
+            <div class="input-group">
+              <input type="text" class="form-control"
+                ng-model="aide.montant">
+              <span class="input-group-addon">{{ aide.unit || '€' }}</span>
+            </div>
+          </div>
+
+          <div class="aide-block" ng-if="aide.type === 'bool'">
+            <label for="{{ 'bool-value-' + $index }}">Le demandeur devrait-il être éligible à cette aide&nbsp;?</label>
+            <div>
+              <label
+                class="btn btn-sm btn-default"
+                ng-class="{active: aide.shouldBeEligible === 'true'}">
+                <input
+                  type="radio"
+                  name="{{ 'bool-value-' + $index }}"
+                  class="sr-only"
+                  ng-model="aide.shouldBeEligible"
+                  value="true"
+                  />
+                Oui
+              </label>
+              <label
+                class="btn btn-sm btn-default"
+                ng-class="{active: aide.shouldBeEligible === 'false'}">
+                <input
+                  type="radio"
+                  name="{{ 'bool-value-' + $index }}"
+                  class="sr-only"
+                  ng-model="aide.shouldBeEligible"
+                  value="false"
+                  />
+                Non
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <label for="add-aide"><h4>Ajoutez les aides dont vous connaissez les valeurs attendues</h4></label>
+    <div class="row select-row">
+      <div class="col-xs-12 col-sm-10 col-md-10">
+        <select
+          id="add-aide"
+          class="form-control"
+          ng-model="suggestion.selectedAide"
+          ng-options="possibleValue as possibleValue.label for possibleValue in (aideOptions | orderObjectBy: 'label') track by possibleValue.label">
+        </select>
+      </div>
+      <div class="col-xs-12 col-sm-2 col-md-2">
+        <button type="button" class="btn btn-default col-xs-12" ng-click="addAide()" ng-disabled="! suggestion.selectedAide">
+          Ajouter
+        </button>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+      <button type="submit" class="btn btn-primary col-xs-10 col-xs-offset-1"
+        ng-disabled="(! suggestion.selectedAides) || (! suggestion.selectedAides.length) || sendingSuggestion">
+        Créer un test à partir des informations fournies
+        <span ng-if="sendingSuggestion">
+          - Envoi en cours…
+          <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+  </form>
+
+  <div ng-if="suggestion.error">
+    <h3>Une erreur s'est produite</h3>
+    <p>Merci de bien vouloir nous contacter grâce <a analytics-on="click" analytics-event="SuggestionErreur" href="mailto:bug@mes-aides.gouv.fr?subject=Probleme%20technique&body=Bonjour%2C%0A%0AJ%27ai%20tent%C3%A9%20de%20cr%C3%A9er%20un%20test%20%C3%A0%20partir%20d%27une%20simulation%20mais%20j%27ai%20rencontr%C3%A9%20l%27erreur%20ci-dessous.%0A%0AJe%20vous%20joins%20%C3%A9galement%20une%20capture%20d%27%C3%A9cran%20pour%20faciliter%20la%20compr%C3%A9hension%20du%20probl%C3%A8me.%0A%0A%E2%80%94%E2%80%94%E2%80%94%E2%80%94%0AID%20%3A%20{{ situation._id }}%0AUser-agent%20%3A%20{{ encodedUserAgent }}%0AErreur%20%3A%20{{ suggestion.encodedError }}%0A%E2%80%94%E2%80%94%E2%80%94%E2%80%94">au lien suivant</a> pour nous permettre d'investiguer et de résoudre le problème.</p>
+  </div>
+</div>
