@@ -73,8 +73,9 @@ angular.module('ddsApp').controller('ContributionCtrl', function($scope, $http, 
         $scope.sendingSuggestion = true;
         $http.post('api/situations/' + $scope.situation._id + '/openfisca-test',
         {
+            absolute_error_margin: 10,
             description: $scope.suggestion.description,
-            expectedResults: $scope.suggestion.selectedAides.reduce(extractExpectation, {}),
+            expected_results: $scope.suggestion.selectedAides.reduce(extractExpectation, {}),
             name: $scope.suggestion.name,
         })
         .then(function(response) {
