@@ -22,6 +22,10 @@ angular.module('ddsApp').controller('FoyerCtrl', function($scope, $state, $state
 
     $scope.$on('individu.conjoint', function(e, conjoint) {
         SituationService.setConjoint(situation, conjoint);
+
+        var demandeur = SituationService.getDemandeur(situation);
+        demandeur.statut_marital = conjoint.statut_marital;
+
         $state.go('foyer.logement');
     });
 

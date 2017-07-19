@@ -1,30 +1,52 @@
 'use strict';
 
 angular.module('ddsApp').controller('FoyerConjointCtrl', function($scope, $state, SituationService) {
-    var hasEnfant = SituationService.hasEnfant($scope.situation);
+    var demandeur = SituationService.getDemandeur($scope.situation);
+    var hasChildren = SituationService.hasEnfant($scope.situation);
     var famille = $scope.famille = $scope.situation.famille;
 
-    $scope.vitEnCouple = Boolean(SituationService.getConjoint($scope.situation));
-    if ((! $scope.vitEnCouple) && famille.rsa_isolement_recent === undefined) {
-        $scope.vitEnCouple = undefined;
+    $scope.locals = {};
+
+    var isFirstView = demandeur.statut_marital == undefined;
+    if (isFirstView) {
+        $scope.locals.isInCouple = undefined;
+    } else {
+        $scope.locals.isInCouple = Boolean(SituationService.getConjoint($scope.situation));
     }
-    $scope.shouldDisplaySubmit = function(force) {
-        return ($scope.shouldDisplaySubmitInitially || force) && (! $scope.vitEnCouple) && (famille.rsa_isolement_recent !== undefined);
-    };
-    $scope.shouldDisplaySubmitInitially = $scope.shouldDisplaySubmit(true);
 
-    $scope.captureIsolement = function() {
-        return $scope.vitEnCouple === false && hasEnfant;
-    };
+    function shouldDisplaySubmit() {
+        return ($scope.locals.isInCouple == false) && (! hasChildren) && (! isFirstView);
+    }
+    $scope.shouldDisplaySubmit = shouldDisplaySubmit;
+    $scope.shouldDisplaySubmitInitially = $scope.locals.isInCouple == false;
 
-    $scope.onRsaIsolementRecentUpdate = function() {
-        if (! $scope.shouldDisplaySubmitInitially) {
+    function captureIsolement() {
+        return $scope.locals.isInCouple == false && hasChildren;
+    }
+    $scope.captureIsolement = captureIsolement;
+
+    function isInCoupleUpdated() {
+        if ($scope.locals.isInCouple == false) {
+            demandeur.statut_marital = 2; // Célibataire et union libre
+        } else {
+            delete $scope.famille.rsa_isolement_recent;
+        }
+        if (isFirstView && (! captureIsolement())) {
+            $scope.$emit('individu.pasDeConjoint');
+        }
+    }
+    $scope.isInCoupleUpdated = isInCoupleUpdated;
+
+    function rsaIsolementRecentUpdated() {
+        if (! shouldDisplaySubmit()) {
             $scope.submit();
         }
-    };
+    }
+    $scope.rsaIsolementRecentUpdated = rsaIsolementRecentUpdated;
 
-    $scope.submit = function() {
+    function submit() {
         $state.go('foyer.logement');
-    };
+    }
+    $scope.submit = submit;
 
 });
