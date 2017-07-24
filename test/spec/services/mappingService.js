@@ -12,11 +12,6 @@ describe('MappingService', function() {
         });
     });
 
-    describe('basic testing environmment', function() {
-
-        it('is injectable', function() {});
-    });
-
     describe('migratePersistedSituation', function() {
         it('should transform ressources', function() {
             var sourceSituation = {
