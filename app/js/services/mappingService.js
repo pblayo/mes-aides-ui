@@ -242,7 +242,26 @@ angular.module('ddsApp').service('MappingService', function($http, droitsDescrip
     }
 
     function buildSituationFromDB(dbSimulation) {
-        return dbSimulation;
+        var period = dbSimulation.scenarios[0].period;
+        var testCase = _.cloneDeep(dbSimulation.scenarios[0].test_case);
+        mappingSchemas.forDuplication
+
+        var situation = {
+            individus: testCase.individus,
+            famille: testCase.familles[0],
+            menage: testCase.menages[0],
+        }
+
+        var forDuplication = mappingSchemas.forDuplication;
+        Object.keys(forDuplication).forEach(function(entityName) {
+            forDuplication[entityName].forEach(function(entityPropertyName) {
+                testCase[entityName].forEach(function(entity) {
+                    entity[entityPropertyName] = _.values(entity[entityPropertyName])[0];
+                });
+            });
+        });
+
+        return situation;
     }
 
     return {

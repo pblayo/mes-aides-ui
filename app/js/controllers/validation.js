@@ -92,7 +92,7 @@ angular.module('ddsApp').controller('ValidationCtrl', function($scope, $http, Ma
                             return simulationResponse.data;
                         })
                         .then(function(simulation) {
-/*
+//*
                             var clonedSituation = _.cloneDeep(situation);
                             if (! areEqual(test,
                                 sourceSituation,
