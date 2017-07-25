@@ -78,21 +78,21 @@ angular.module('ddsApp').controller('ValidationCtrl', function($scope, $http, Ma
         var end = ($scope.validation.index + 1) * $scope.validation.step;
         $scope.validation.tests.slice(start, end).forEach(function(test) {
             if (! $scope.validation.failedTests.length) {
-                $http.get('api/situations/' + test.scenario.situationId + '/openfisca-request')
+                $http.get('deprecated/situations/' + test.scenario.situationId + '/openfisca-request')
                 .then(function(openfiscaRequest) {
-                    return $http.get('api/situations/' + test.scenario.situationId)
+                    return $http.get('deprecated/situations/' + test.scenario.situationId)
                     .then(function(situationResponse) {
                         var sourceSituation = situationResponse.data;
 
                         MigrationService.persistedSituationPretransformationUpdate(sourceSituation);
                         var situation = MigrationService.migratePersistedSituation(sourceSituation);
 
-                        $http.post('api/simulations', MappingService.buildOpenFiscaRequest(situation))
+                        $http.post('api/situations', situation)
                         .then(function(simulationResponse) {
                             return simulationResponse.data;
                         })
                         .then(function(simulation) {
-//*
+/*
                             var clonedSituation = _.cloneDeep(situation);
                             if (! areEqual(test,
                                 sourceSituation,
@@ -101,7 +101,7 @@ angular.module('ddsApp').controller('ValidationCtrl', function($scope, $http, Ma
                                 clonedSituation)) {
                                 return;
                             }//*/
-                            $http.get('api/simulations/' + simulation._id + '/request')
+                            $http.get('api/situations/' + simulation._id + '/openfisca-request')
                             .then(function(requestResult) {
                                 var newOpenfiscaRequest = requestResult.data;
                                 var legacyOpenfiscaRequest = openfiscaRequest.data;
@@ -131,7 +131,7 @@ angular.module('ddsApp').controller('ValidationCtrl', function($scope, $http, Ma
         });
     }
 
-    $http.get('api/public/acceptance-tests')
+    $http.get('deprecated/public/acceptance-tests')
     .then(function(tests) {
         $scope.validation.tests = tests.data;
         return tests.data;
