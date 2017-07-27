@@ -55,37 +55,55 @@ describe('Controller: FoyerConjointCtrl', function() {
         it('does not show the submit button', function() {
             expect(scope.shouldDisplaySubmit()).toBe(false);
         });
+    });
 
-        describe('user with kids for isolement', function() {
+    describe('couple', function() {
+        beforeEach(function() {
+            spyOn(scope, '$emit');
+            initController();
+            scope.locals.isInCouple = true;
+
+            scope.isInCoupleUpdated();
+        });
+
+        it('stays on the page', function() {
+            expect(scope.$emit).not.toHaveBeenCalledWith('individu.pasDeConjoint');
+        });
+
+        it('does not show the submit button', function() {
+            expect(scope.shouldDisplaySubmit()).toBe(false);
+        });
+    });
+
+    describe('user with kids for isolement', function() {
+        beforeEach(function() {
+            scope.situation.individus.push({
+                role: 'enfant'
+            });
+            spyOn(state, 'go');
+            initController();
+            scope.locals.isInCouple = false;
+            scope.isInCoupleUpdated();
+        });
+
+        it('ask for isolement and stays on the page', function() {
+            expect(scope.captureIsolement()).toBe(true);
+            expect(state.go).not.toHaveBeenCalled();
+        });
+
+        it('does not show a submit button', function() {
+            expect(scope.shouldDisplaySubmit()).toBeFalsy();
+        });
+
+        describe('isolement input', function() {
             beforeEach(function() {
-                scope.situation.individus.push({
-                    role: 'enfant'
-                });
-                spyOn(state, 'go');
-                initController();
-                scope.locals.isInCouple = false;
-                scope.isInCoupleUpdated();
+                scope.situation.famille.rsa_isolement_recent = true;
+                scope.rsaIsolementRecentUpdated();
             });
 
-            it('ask for isolement and stays on the page', function() {
-                expect(scope.captureIsolement()).toBe(true);
-                expect(state.go).not.toHaveBeenCalled();
-            });
-
-            it('does not show a submit button', function() {
-                expect(scope.shouldDisplaySubmit()).toBeFalsy();
-            });
-
-            describe('isolement input', function() {
-                beforeEach(function() {
-                    scope.situation.famille.rsa_isolement_recent = true;
-                    scope.rsaIsolementRecentUpdated();
-                });
-
-                it('goes to foyer.logement', function() {
-                    expect(scope.shouldDisplaySubmit()).toBe(false);
-                    expect(state.go).toHaveBeenCalledWith('foyer.logement');
-                });
+            it('goes to foyer.logement', function() {
+                expect(scope.shouldDisplaySubmit()).toBe(false);
+                expect(state.go).toHaveBeenCalledWith('foyer.logement');
             });
         });
     });

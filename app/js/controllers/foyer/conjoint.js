@@ -31,7 +31,7 @@ angular.module('ddsApp').controller('FoyerConjointCtrl', function($scope, $state
         } else {
             delete $scope.famille.rsa_isolement_recent;
         }
-        if (isFirstView && (! captureIsolement())) {
+        if (isFirstView && (! $scope.locals.isInCouple) && (! captureIsolement())) {
             $scope.$emit('individu.pasDeConjoint');
         }
     }
