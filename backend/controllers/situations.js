@@ -1,4 +1,5 @@
 var openfisca = require('../lib/openfisca');
+var openfiscaTest = require('../lib/openfisca/test');
 var Situation = require('mongoose').model('Situation');
 
 exports.situation = function(req, res, next, id) {
@@ -38,3 +39,17 @@ exports.openfiscaRequest = function(req, res) {
 exports.openfiscaRequestFromLegacy = function(req, res) {
     res.send(openfisca.buildOpenFiscaRequestFromLegacySituation(req.situation));
 };
+
+exports.openfiscaTest = function(req, res) {
+    var details = {
+        name: 'default name',
+        description: 'default description',
+        output_variables: {
+            valueOne: 1,
+        },
+        absolute_error_margin: 0.1,
+    };
+    var situation = req.situation.toObject ? req.situation.toObject() : req.situation;
+    res.type('yaml').send(openfiscaTest.generateYAMLTest(details, situation));
+};
+

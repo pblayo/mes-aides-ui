@@ -50,6 +50,9 @@ function sendOpenfiscaRequest(simulation, callback) {
 }
 
 var buildOpenFiscaRequest = exports.buildOpenFiscaRequest = mapping.buildOpenFiscaRequest;
+exports.buildOpenFiscaRequestFromLegacySituation = function buildOpenFiscaRequestFromLegacySituation(situation) {
+    return buildOpenFiscaRequest(migration.migratePersistedSituation(situation.toObject ? situation.toObject() : situation));
+};
 
 function calculate(situation, callback) {
     sendOpenfiscaRequest(buildOpenFiscaRequest(situation), callback);
