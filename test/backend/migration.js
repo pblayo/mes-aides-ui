@@ -48,6 +48,7 @@ function deepDiffRight(left, right) {
 
 function runTests() {
     AcceptanceTest.find({
+        // '_id': '53d7b76df6aa390200a6cd5c', // Add firstName
         // '_id': '540d69a1aa90150200440ee9', // remove rejected test - Caution will hang
         // '_id': '582b06f467831ca264e93def', // Situation 582b06e667831ca264e93de5 set individus.2.specificSituations = []
         // '_id': '53d220ce159e330200810b8e', // Persisted situation error
@@ -65,13 +66,13 @@ function runTests() {
         }, {}, { sort: '_id' }, function(err, retrievedTests) {
         var tests = retrievedTests.slice(0, 2000);
         var done = 0;
-        tests.forEach(function(test) {
-            LegacySituation.findById(test.scenario.situationId, function(err, dbLegacySituation) {
-                if (err) {
-                    console.log('var Err_testID_ = \'' + test._id + '\'; // LegacySituation.findById');
-                    console.log(JSON.stringify(err, null, 2));
-                    process.exit(1);
-                }
+        function processTests() {
+            if(done == tests.length) {
+                process.exit();
+            }
+            var test = tests[done];
+            LegacySituation.findById(test.scenario.situationId)
+            .then(function(dbLegacySituation) {
                 var dbSituationJSON = JSON.stringify(dbLegacySituation.toObject(), null, 2);
                 var situation = dbLegacySituation.toObject();
                 migration.persistedSituationPretransformationUpdate(situation);
@@ -94,7 +95,7 @@ function runTests() {
                     if (/*true || //*/
                         diff01 || diff02) {
                         var structure0 = [diff01, diff02];
-                        console.log('var testID_ = \'' + test._id + '\'');
+                        console.log('var testID_db_ = \'' + test._id + '\'');
                         console.log(JSON.stringify(structure0, null, 2));
                         console.log(JSON.stringify([generatedSituation, persistedSituation], null, 2));
 
@@ -111,7 +112,7 @@ function runTests() {
                         diff1 || diff2) {
                         var structure = [diff1, diff2];
 
-                        console.log('var testID = \'' + test._id + '\'');
+                        console.log('var testID_req_ = \'' + test._id + '\'');
                         console.log(JSON.stringify(frontSituation, null, 2));
                         console.log(dbSituationJSON);
                         console.log(JSON.stringify(structure, null, 2));
@@ -123,14 +124,17 @@ function runTests() {
 
                     done += 1;
 
-                    if (done == tests.length) {
-                        process.exit();
-                    }
+                    processTests();
                 });
+            }).catch(function(err) {
+                console.log('var Err_testID_ = \'' + test._id + '\'; // LegacySituation.findById');
+                console.log(err);
+                console.log(JSON.stringify(err, null, 2));
+                process.exit(1);
             });
-        });
+        };
+        processTests();
     });
-    //*/
 }
 
 Situation.deleteMany({}, function(err) {

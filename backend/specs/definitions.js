@@ -32,6 +32,7 @@ var additionalDefinitions = {
 
 Object.assign(openfiscaSpec.definitions, additionalDefinitions);
 
+openfiscaSpec.definitions.Individu.properties.firstName = { type: 'string' };
 openfiscaSpec.definitions.Individu.properties.nationalite = { type: 'string' };
 openfiscaSpec.definitions.Individu.properties.role = { type: 'string' };
 openfiscaSpec.definitions.Individu.properties.specificSituations = {

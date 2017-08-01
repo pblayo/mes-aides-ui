@@ -179,9 +179,12 @@ function mapIndividus(situation) {
         }
 
         var propertiesToDelete = [
-            'salaire_net_hors_revenus_exceptionnels',
-            'tauxIncapacite',
+            'firstName',
             'nationalite',
+            'role',
+            'salaire_net_hors_revenus_exceptionnels',
+            'specificSituations',
+            'tauxIncapacite',
         ];
         propertiesToDelete.forEach(function(propertyName) {
             delete openfiscaIndividu[propertyName];
@@ -193,10 +196,8 @@ function mapIndividus(situation) {
 
 function buildOpenFiscaTestCase(situation) {
     var familles = [ situation.famille ];
-    var individus = mapIndividus(situation); // 0
-
-    allocateIndividualsToEntities(situation); // 1
-    // 5 YM2 proxy when not provided
+    var individus = mapIndividus(situation);
+    allocateIndividualsToEntities(situation);
 
     delete situation.menage.nomCommune;
 
@@ -206,15 +207,9 @@ function buildOpenFiscaTestCase(situation) {
         foyers_fiscaux: [ situation.foyer_fiscal ],
         menages: [ situation.menage ],
     };
-    propertyMove.movePropertyValuesToGroupEntity(testCase); // 2
-    setNonInjectedPrestationsToZero(familles, individus, situation.dateDeValeur); // 3
-
-    copyTo3PreviousMonths(testCase, situation.dateDeValeur); // 4
-
-    testCase.individus.forEach(function(individu) {
-        delete individu.specificSituations;
-        delete individu.role;
-    });
+    propertyMove.movePropertyValuesToGroupEntity(testCase);
+    setNonInjectedPrestationsToZero(familles, individus, situation.dateDeValeur);
+    copyTo3PreviousMonths(testCase, situation.dateDeValeur);
 
     testCase.menages.forEach(function(menage) {
         delete menage.code_postal;

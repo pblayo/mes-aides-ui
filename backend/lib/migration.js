@@ -88,6 +88,7 @@ exports.migratePersistedSituation = function(sourceSituation) {
         dateDeNaissance: 'date_naissance',
         echelonBourse: 'echelon_bourse',
         enceinte: 'enceinte',
+        firstName: 'firstName',
         gardeAlternee: 'garde_alternee',
         habiteChezParents: 'habite_chez_parents',
         id: 'id',
