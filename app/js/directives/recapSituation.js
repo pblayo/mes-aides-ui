@@ -7,14 +7,17 @@ angular.module('ddsRecapSituation').directive('recapSituation', function($timeou
         scope: {
             situation: '='
         },
-        controller: function($scope) {
-            var situation = $scope.situation;
+        controller: function($scope, $filter) {
+            $scope.process = function(date) {
+                var dt = new Date(date);
+                var mom = moment(date);
+                return $filter('date')(mom, 'dd/MM/yyyy');
+            }
+            $scope.age = IndividuService.age;
+            $scope.nationalites = _.keyBy(nationalites, 'id');
+            $scope.situationJSON = JSON.stringify($scope.situation, null, 2);
 
-            $scope.rfrCaptured = $scope.situation.rfr || $scope.situation.rfr === 0;
-
-            $scope.yearMoins2 = moment(situation.dateDeValeur).subtract(2, 'years').format('YYYY');
-
-            var individuLabel = function(individu) {
+            $scope.individuLabel = function(individu) {
                 if ('demandeur' === individu.role) {
                     return 'Demandeur';
                 } else if ('conjoint' === individu.role) {
@@ -22,7 +25,12 @@ angular.module('ddsRecapSituation').directive('recapSituation', function($timeou
                 } else {
                     return individu.firstName + ' (' + individu.role + ')';
                 }
-            };
+            }
+            /*var situation = $scope.situation;
+
+            $scope.yearMoins2 = moment(situation.dateDeValeur).subtract(2, 'years').format('YYYY');
+
+            ;
 
             var mapIndividuRessources = function(individu) {
                 var result = [];
@@ -190,6 +198,7 @@ angular.module('ddsRecapSituation').directive('recapSituation', function($timeou
             }
 
             mapLogement(situation);
+            */
         }
     };
 });

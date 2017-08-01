@@ -38,6 +38,23 @@ angular.module('ddsCommon').factory('SituationService', function($http, $session
             return situation;
         },
 
+        restoreRemote: function(situationId) {
+            return $http.get('/api/situations/' + situationId, {
+                params: { cacheBust: Date.now() }
+            }).then(function(result) {
+                var situation = $sessionStorage.situation = result.data;
+                situation.dateDeValeur = new Date(situation.dateDeValeur);
+                situation.individus.forEach(function(individu) {
+                    individu.date_naissance = new Date(individu.date_naissance);
+                });
+                return situation;
+            });
+        },
+
+        saveRemote: function(situation) {
+
+        },
+
         getMonths: function(baseDate, count, upTo) {
             if (! count) {
                 count = 3;
