@@ -26,7 +26,9 @@ var individuSchema = {
     },
     date_arret_de_travail: {
         src: 'date_arret_de_travail',
-        fn: formatDate
+        fn: function (dateArretDeTravail) {
+            return dateArretDeTravail && formatDate(dateArretDeTravail);
+        }
     },
     activite: {
         src: 'specificSituations',
