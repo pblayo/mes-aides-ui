@@ -24,7 +24,7 @@
 <div ng-if="! error && ! warning && ! awaitingResults">
 
   <div ng-if="! (droits.prestationsNationales | isEmpty)">
-    <p>D'après la situation que vous avez décrite, vous êtes a priori éligible à ces aides <strong>{{ droits.partenairesLocaux ? "nationales" : "" }}</strong> : </p>
+    <p>D'après la situation que vous avez décrite, vous êtes a priori éligible à ces aides <strong>{{ droits.partenairesLocaux ? "nationales". Les montants avancés sont arrondis à une dizaine d'euros près : "" }}</strong> : </p>
     <div class="frame-resultats">
       <droit-eligibles-list list="droits.prestationsNationales"></droit-eligibles-list>
       <ym2-ressources-call-to-action ng-if="! ressourcesYearMoins2Captured"></ym2-ressources-call-to-action>
