@@ -2,15 +2,15 @@
 
 angular.module('ddsCommon').constant('situationsFamiliales', [
     {
-        value: 'Marié',  // Enum value 1 in OpenFisca
+        value: 'marie',
         label: 'Marié(e)',
     },
     {
-        value: 'Pacsé',  // Enum value 5 in OpenFisca
+        value: 'pacse',
         label: 'Pacsé(e)',
     },
     {
-        value: 'Célibataire',  // Enum value 2 in OpenFisca
+        value: 'celibataire',
         label: 'En union libre',
     }
 ]);
